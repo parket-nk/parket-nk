@@ -38,7 +38,7 @@ button{font:inherit}
 .header-cta:hover{background:var(--gold);color:#111}
 
 .hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
-.hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,9,.88) 0%,rgba(8,9,9,.58) 48%,rgba(8,9,9,.45) 100%),linear-gradient(0deg,rgba(8,9,9,.88) 0%,transparent 45%),url('https://www.pastpresentwoodflooring.co.uk/floor-refurbishment/hummel-10/') center/cover;transform:scale(1.03);animation:heroZoom 12s ease-out forwards}
+.hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,9,.88) 0%,rgba(8,9,9,.58) 48%,rgba(8,9,9,.45) 100%),linear-gradient(0deg,rgba(8,9,9,.88) 0%,transparent 45%),url('https://images.portal.muenchen.de/000/000/309/937/versions/parkett-verlegen-muenchen-sbn_660x440_6a8317e6e26aa.png') center/cover;transform:scale(1.03);animation:heroZoom 12s ease-out forwards}
 @keyframes heroZoom{to{transform:scale(1)}}
 .hero-content{position:relative;z-index:2;padding:150px 0 74px;width:min(1180px,calc(100% - 48px));margin:auto}
 .eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold2);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
@@ -59,6 +59,16 @@ button{font:inherit}
 .hero-stat b{font-size:22px}.hero-stat span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
 
 .section{padding:120px 0}
+.intro-band{padding:105px 0;background:#111314;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.intro-band-grid{display:grid;grid-template-columns:.35fr 1fr;gap:60px;align-items:end}
+.intro-band h2{font-size:clamp(42px,6vw,76px)}
+.intro-band h2 em{font-family:"Playfair Display",serif;color:var(--gold2);font-style:normal;font-weight:500}
+.intro-band p{max-width:580px;color:var(--muted);font-size:16px;margin:22px 0 0}
+.proof-lead{margin-bottom:45px}
+.proof-lead h2{max-width:900px}
+.contact-topline{width:min(1180px,calc(100% - 48px));margin:0 auto 70px;display:flex;justify-content:space-between;color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:.16em}
+.works-section .photo{border:1px solid rgba(255,255,255,.06)}
+
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:48px}
 .kicker{color:var(--gold);font-size:11px;text-transform:uppercase;letter-spacing:.2em;margin-bottom:14px}
 h2{font-size:clamp(34px,5vw,58px);line-height:1.05;letter-spacing:-.04em;margin:0}
@@ -140,16 +150,23 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  .footer-contact{grid-column:1/-1}
 }
 @media(max-width:640px){
+ .intro-band{padding:78px 0}
+ .intro-band-grid{grid-template-columns:1fr;gap:20px}
+ .intro-band h2{font-size:44px}
+ .intro-band p{font-size:14px}
+ .contact-topline{width:calc(100% - 32px);margin-bottom:45px;display:block}
+ .contact-topline span{display:block;margin-bottom:8px}
+
  .container,.hero-content,.hero-bottom-inner{width:calc(100% - 32px)}
  .header{height:64px}.header-inner{width:calc(100% - 32px)}
  .logo{font-size:13px}.logo-mark{width:26px;height:26px}
  .header-cta{padding:9px 11px;font-size:10px}
  .hero{min-height:100svh}
- .hero-media{background-position:62% center}
+ .hero-media{background-position:55% center;background-image:linear-gradient(90deg,rgba(8,9,9,.86) 0%,rgba(8,9,9,.55) 58%,rgba(8,9,9,.32) 100%),linear-gradient(0deg,rgba(8,9,9,.86) 0%,transparent 58%),url('https://images.portal.muenchen.de/000/000/309/937/versions/parkett-verlegen-muenchen-sbn_660x440_6a8317e6e26aa.png')}
  .hero-content{padding:115px 0 120px}
  .hero h1{font-size:46px;line-height:.95;max-width:100%}
  .hero-sub{font-size:14px;line-height:1.6;margin-bottom:26px}
- .actions{display:grid;grid-template-columns:1fr;gap:9px}
+ .hero .actions{display:none}
  .btn{width:100%;min-height:50px}
  .hero-bottom{bottom:56px}
  .hero-bottom-inner{grid-template-columns:repeat(3,1fr)}
@@ -165,7 +182,6 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  .footer-grid{grid-template-columns:1fr}.footer-contact{grid-column:auto}
  .copyright{display:block}.copyright span{display:block;margin-top:8px}
  .mobile-bar{position:fixed;display:grid;grid-template-columns:1fr 1fr 1fr;bottom:0;left:0;right:0;height:56px;background:rgba(12,13,14,.96);backdrop-filter:blur(18px);border-top:1px solid var(--line);z-index:45;padding-bottom:env(safe-area-inset-bottom)}
- .hero-telegram{display:none}
  .mobile-bar a{display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border-right:1px solid var(--line)}
  .mobile-bar a:last-child{border:0}.mobile-bar .m-main{background:var(--gold);color:#111}
 }
@@ -193,9 +209,9 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 <section class="hero">
  <div class="hero-media"></div>
  <div class="hero-content reveal">
-  <div class="eyebrow">Новокузнецк · Кемеровская область</div>
-  <h1>Пол, который<br><em>выглядит дорого.</em></h1>
-  <p class="hero-sub">Реставрация, шлифовка и укладка деревянных полов с профессиональной техникой Lägler. 15 лет опыта и внимание к каждой детали.</p>
+  <div class="eyebrow">ПАРКЕТ · НОВОКУЗНЕЦК · 15 ЛЕТ</div>
+  <h1>Деревянный пол.<br><em>Сделанный как надо.</em></h1>
+  <p class="hero-sub">Реставрация, шлифовка и укладка деревянных полов. Lägler Hummel и Trio. 15 лет практики в Новокузнецке.</p>
   <div class="actions">
    <a class="btn btn-primary" href="#contacts">Заказать замер <span>↗</span></a>
    <a class="btn btn-ghost" href="https://wa.me/79095220333" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
@@ -213,6 +229,23 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 
 <section class="section services" id="services">
  <div class="container">
+  <div class="section-head reveal"><div><div class="kicker">01 · Услуги</div><h2>Не маскируем<br>проблему. Исправляем её.</h2></div><p class="section-intro">От диагностики основания до последнего слоя финиша — одна технология и один ответственный мастер.</p></div>
+  <div class="service-grid reveal">
+   <article class="service"><div class="service-num">01 / ШЛИФОВКА</div><h3>Вернуть дереву<br>первоначальный вид.</h3><p>Циклевка, глубокая и финишная шлифовка. Убираем старое покрытие, перепады и следы эксплуатации.</p><div class="service-arrow">↗</div></article>
+   <article class="service"><div class="service-num">02 / РЕСТАВРАЦИЯ</div><h3>Сохранить то,<br>что ещё можно спасти.</h3><p>Паркет, массив, локальные повреждения, щели и скрипы. Сначала оцениваем — потом предлагаем решение.</p><div class="service-arrow">↗</div></article>
+   <article class="service"><div class="service-num">03 / УКЛАДКА</div><h3>Геометрия пола<br>без компромиссов.</h3><p>Паркет, массив, паркетная доска, ламинат и другие покрытия. Прямая укладка, диагональ, ёлка.</p><div class="service-arrow">↗</div></article>
+   <article class="service"><div class="service-num">04 / ФИНИШ</div><h3>Последний слой<br>решает всё.</h3><p>Лак, масло, тонировка и аккуратный монтаж плинтуса. Подбираем финиш под древесину и нагрузку.</p><div class="service-arrow">↗</div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section intro-band">
+ <div class="container intro-band-grid reveal">
+  <div class="kicker">02 · Подход</div>
+  <div><h2>Хороший пол<br><em>видно сразу.</em></h2><p>Не за счёт декора. За счёт ровной геометрии, правильной подготовки и аккуратного финиша.</p></div>
+ </div>
+</section>
+ <div class="container">
   <div class="section-head reveal"><div><div class="kicker">Что делаем</div><h2>Работаем с полом<br>от основания до финиша.</h2></div><p class="section-intro">Не просто «прошлифовать». Сначала оцениваем состояние пола, затем подбираем технологию, материал и финишное покрытие.</p></div>
   <div class="service-grid reveal">
    <article class="service"><div class="service-num">01 / 04</div><h3>Шлифовка<br>и циклевка</h3><p>Старый или новый деревянный пол. Глубокая обработка, выравнивание и подготовка поверхности.</p><div class="service-arrow">↗</div></article>
@@ -223,9 +256,9 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  </div>
 </section>
 
-<section class="section" id="works">
+<section class="section works-section" id="works">
  <div class="container">
-  <div class="section-head reveal"><div><div class="kicker">Визуальный уровень</div><h2>Дерево любит<br>точность.</h2></div><p class="section-intro">Правильная техника, подготовка и финишное покрытие меняют не только внешний вид пола, но и ощущение всего помещения.</p></div>
+  <div class="section-head reveal"><div><div class="kicker">03 · Работы</div><h2>До и после<br>начинается с деталей.</h2></div><p class="section-intro">Показываем сам процесс: шлифовка, укладка и финиш. Никаких стоковых обещаний вместо работы.</p></div>
   <div class="showcase reveal">
    <div class="photo tall"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/63a48af377400155742b860d/66b3a38c-4d28-4bf2-8ffe-9ff33211600d/Bob-sanding-floor.jpg" alt="Шлифовка паркета машиной Lägler Trio"><div class="photo-caption"><b>Шлифовка паркета</b><span>Точная обработка · подключённое пылеудаление</span></div></div>
    <div class="photo small"><img loading="lazy" src="https://images.portal.muenchen.de/000/000/309/937/versions/parkett-verlegen-muenchen-sbn_660x440_6a8317e6e26aa.png" alt="Укладка премиального паркета ёлкой"><div class="photo-caption"><b>Укладка паркета</b><span>Премиальная ёлка · точная геометрия</span></div></div>
@@ -235,6 +268,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 </section>
 
 <section class="section proof">
+ <div class="container proof-lead reveal"><div class="kicker">04 · Почему мы</div><h2>15 лет — это не цифра.<br>Это количество ошибок, которые уже не нужно совершать.</h2></div>
  <div class="container">
   <div class="proof-grid reveal">
    <div class="proof-item"><div class="proof-number">15<span>+</span></div><p>лет практического опыта</p></div>
@@ -245,12 +279,12 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  </div>
 </section>
 
-<section class="section" id="technology">
+<section class="section technology-section" id="technology">
  <div class="container">
   <div class="tech-grid">
    <div class="tech-visual reveal"><div class="tech-badge"><strong>Lägler</strong><span>Hummel · Trio · минимум пыли</span></div></div>
    <div class="reveal">
-    <div class="kicker">Почему это важно</div><h2>Профессиональный результат начинается с техники.</h2>
+    <div class="kicker">05 · Технология</div><h2>Немецкая техника.<br>Ручной контроль.</h2>
     <div class="machine-strip">
      <div class="machine-card"><img src="https://hartungparkett.de/site/assets/files/12396/parkett_abschleifen.1200x0.jpg" alt="Lägler Hummel в работе"><b>LÄGLER HUMMEL</b><span>Основная шлифовка · высокая эффективность пылеудаления</span></div>
      <div class="machine-card"><img src="https://www.laegler.com/fileadmin/user_upload/Downloads/Maschinenbilder/TRIO_mit_LED_2020-10-15.png" alt="Lägler Trio"><b>LÄGLER TRIO</b><span>Финишная шлифовка · равномерная поверхность</span></div>
@@ -267,6 +301,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 </section>
 
 <section class="section cta" id="contacts">
+ <div class="contact-topline"><span>06 · Контакты</span><span>Новокузнецк · Кемеровская область</span></div>
  <div class="container cta-inner reveal">
   <div><div class="kicker">Начнём с оценки</div><h2>Покажите пол.<br>Скажу, что с ним делать.</h2><p>Отправьте фото в WhatsApp или Telegram — предварительно сориентирую по решению и дальнейшим шагам.</p></div>
   <div class="actions">
