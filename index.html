@@ -10,7 +10,7 @@
 :root{--bg:#0c0b0a;--panel:#151311;--panel2:#1b1814;--gold:#c8a56a;--gold2:#e3c78f;--text:#f5f0e7;--muted:#a9a198;--line:#2c2823;--max:1180px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.45}a{color:inherit;text-decoration:none}button{font:inherit}
 body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E")}
-.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.nav{position:absolute;z-index:5;top:0;left:0;right:0;padding:18px 0}.navin{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;letter-spacing:.14em;font-size:13px}.logo span{color:var(--gold)}.navlinks{display:none;gap:24px;font-size:13px;color:#d2cbc2}.navlinks a:hover{color:var(--gold)}
+.wrap{width:min(var(--max),calc(100% - 32px));margin:auto}.nav{position:absolute;z-index:5;top:0;left:0;right:0;padding:18px 0}.navin{display:flex;justify-content:space-between;align-items:center}.logo{font-weight:900;letter-spacing:.14em;font-size:13px}.logo span{color:var(--gold)}.navlinks{display:none;gap:24px;font-size:13px;color:#d2cbc2}.navlinks a:hover{color:var(--gold)}.navCall{display:none;color:var(--gold2);font-size:12px;font-weight:800}.navCall:hover{color:#fff}
 .hero{min-height:100svh;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:linear-gradient(180deg,rgba(8,7,6,.28),rgba(8,7,6,.25) 35%,rgba(8,7,6,.94) 91%,var(--bg)),url('https://www.mojmojster.net/showfile.php?uuid=e92bce880af096a5114b957acddc30b908bb1ed5') center/cover}
 .hero:after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 72% 35%,rgba(200,165,106,.14),transparent 35%);pointer-events:none}.hero .wrap{position:relative;z-index:2;padding:100px 0 48px}
 .kicker{display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(200,165,106,.5);border-radius:99px;padding:8px 12px;color:var(--gold2);font-size:11px;letter-spacing:.13em;text-transform:uppercase}.dot{width:6px;height:6px;background:var(--gold);border-radius:50%;box-shadow:0 0 14px var(--gold)}
@@ -27,30 +27,30 @@ section{padding:86px 0}.eyebrow{color:var(--gold);font-size:11px;font-weight:900
 .cta{padding:0 0 100px}.ctaBox{border:1px solid #4b3c29;background:radial-gradient(circle at 80% 0%,rgba(200,165,106,.16),transparent 36%),#171410;border-radius:28px;padding:34px}.ctaBox h2{max-width:750px;margin-bottom:14px}.ctaBox p{color:var(--muted);max-width:620px}.ctaBtns{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
 .bottom{position:fixed;z-index:20;left:0;right:0;bottom:0;padding:9px 12px calc(9px + env(safe-area-inset-bottom));background:rgba(12,11,10,.9);backdrop-filter:blur(16px);border-top:1px solid var(--line)}.bottomIn{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;max-width:650px;margin:auto}.bottom a{height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:850;background:#191713;border:1px solid var(--line)}.bottom a.main{background:var(--gold);color:#17130e;border-color:var(--gold)}
 footer{padding:30px 0 105px;color:#6e6861;font-size:11px;text-align:center}
-@media(min-width:800px){.navlinks{display:flex}.wrap{width:min(var(--max),calc(100% - 64px))}.serviceGrid{grid-template-columns:repeat(4,1fr)}.bottom{display:none}}
-@media(max-width:650px){section{padding:66px 0}.showcase{grid-template-columns:1fr}.shot{min-height:330px}.side{grid-template-columns:1fr 1fr}.side .shot{min-height:180px}.stats{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.before{grid-template-columns:1fr}.compare{height:270px}.heroProof{gap:15px}.ctaBox{padding:25px}.hero .wrap{padding-bottom:38px}}
+@media(min-width:800px){.navlinks{display:flex}.navCall{display:block}.wrap{width:min(var(--max),calc(100% - 64px))}.serviceGrid{grid-template-columns:repeat(4,1fr)}.bottom{display:none}}
+@media(max-width:650px){section{padding:66px 0}.navCall{display:none}.showcase{grid-template-columns:1fr}.shot{min-height:330px}.side{grid-template-columns:1fr 1fr}.side .shot{min-height:180px}.stats{grid-template-columns:1fr 1fr}.process{grid-template-columns:1fr 1fr}.before{grid-template-columns:1fr}.compare{height:270px}.heroProof{gap:15px}.ctaBox{padding:25px}.hero .wrap{padding-bottom:38px}}
 </style>
 </head>
 <body>
 <header class="hero" id="top">
-<nav class="nav"><div class="wrap navin"><a class="logo" href="#top">ПАРКЕТ<span>·</span>НК</a><div class="navlinks"><a href="#services">Услуги</a><a href="#works">Работы</a><a href="#process">Как работаем</a><a href="#contact">Контакты</a></div></div></nav>
+<nav class="nav"><div class="wrap navin"><a class="logo" href="#top">ПАРКЕТ<span>·</span>НК</a><div class="navlinks"><a href="#services">Услуги</a><a href="#works">Работы</a><a href="#process">Как работаем</a><a href="#contact">Контакты</a></div><a class="navCall" href="tel:+79095220333">+7 909 522-03-33</a></div></nav>
 <div class="wrap">
-<div class="kicker"><span class="dot"></span> Новокузнецк · дерево · паркет</div>
-<h1>Пол, который<br><em>снова хочется видеть.</em></h1>
-<p class="lead">Реставрация, шлифовка, укладка и ремонт деревянных полов. Бережно к дереву, внимательно к деталям.</p>
-<div class="heroBtns"><a class="btn primary" href="tel:+79095220333">Позвонить</a><a class="btn dark" href="https://wa.me/79095220333" target="_blank">WhatsApp</a><a class="btn dark" href="https://t.me/He_Maks" target="_blank">Telegram</a></div>
-<div class="heroProof"><div><b>10+ лет</b>опыта</div><div><b>Hummel · Trio</b>профессиональное оборудование</div><div><b>По фото</b>можно начать оценку</div></div>
+<div class="kicker"><span class="dot"></span> Новокузнецк · реставрация паркета</div>
+<h1>Вернём деревянному полу<br><em>его настоящий вид.</em></h1>
+<p class="lead">Шлифовка, реставрация, укладка и ремонт паркета и деревянных полов. Профессиональное оборудование Hummel и Trio.</p>
+<div class="heroBtns"><a class="btn primary" href="https://wa.me/79095220333?text=Здравствуйте!%20Хочу%20заказать%20замер%20и%20оценку%20пола." target="_blank">Заказать замер</a><a class="btn dark" href="tel:+79095220333">Позвонить</a><a class="btn dark" href="https://t.me/He_Maks" target="_blank">Telegram</a></div>
+<div class="heroProof"><div><b>10+ лет</b>опыта</div><div><b>Hummel · Trio</b>профессиональная техника</div><div><b>По фото</b>предварительная оценка</div></div>
 </div>
 </header>
 
 <main>
-<section id="services"><div class="wrap reveal"><div class="eyebrow">Услуги</div><h2>Сделаем пол<br>главной деталью интерьера.</h2><p class="sub">Без лишнего пафоса: смотрим состояние пола, предлагаем разумный вариант и доводим работу до аккуратного результата.</p>
+<section id="services"><div class="wrap reveal"><div class="eyebrow">Услуги</div><h2>Всё, что нужно<br>деревянному полу.</h2><p class="sub">От восстановления старого паркета до укладки нового покрытия. Сначала разбираемся с задачей, затем предлагаем оптимальный вариант.</p>
 <div class="tabs" role="tablist"><button class="tab active" data-filter="all">Все работы</button><button class="tab" data-filter="restore">Реставрация</button><button class="tab" data-filter="install">Укладка</button><button class="tab" data-filter="repair">Ремонт</button></div>
 <div class="serviceGrid">
-<article class="service" data-cat="restore"><span class="serviceNum">01 / РЕСТАВРАЦИЯ</span><h3>Шлифовка и восстановление</h3><p>Снимаем старое покрытие, выравниваем поверхность и подготавливаем дерево к новой жизни.</p></article>
-<article class="service" data-cat="restore"><span class="serviceNum">02 / ПОКРЫТИЕ</span><h3>Лак или масло</h3><p>Финишное покрытие под задачу помещения и желаемый внешний вид древесины.</p></article>
-<article class="service" data-cat="install"><span class="serviceNum">03 / УКЛАДКА</span><h3>Паркет и доска</h3><p>Штучный и модульный паркет, инженерная и массивная доска, прямые и сложные рисунки.</p></article>
-<article class="service" data-cat="repair"><span class="serviceNum">04 / РЕМОНТ</span><h3>Скрип и повреждения</h3><p>Локальный ремонт, замена элементов, работа с основанием и устранение проблем пола.</p></article>
+<article class="service" data-cat="restore"><span class="serviceNum">01 / РЕСТАВРАЦИЯ</span><h3>Шлифовка и восстановление</h3><p>Удаление старого покрытия, выравнивание и подготовка поверхности к финишу.</p></article>
+<article class="service" data-cat="restore"><span class="serviceNum">02 / ФИНИШ</span><h3>Лак, масло, тонирование</h3><p>Выбор покрытия и оттенка под интерьер и требуемую износостойкость.</p></article>
+<article class="service" data-cat="install"><span class="serviceNum">03 / УКЛАДКА</span><h3>Паркет, доска, ламинат</h3><p>Штучный и модульный паркет, инженерная и массивная доска, ламинат и другие покрытия.</p></article>
+<article class="service" data-cat="repair"><span class="serviceNum">04 / РЕМОНТ</span><h3>Скрип и повреждения</h3><p>Локальный ремонт, замена элементов, устранение скрипа и работа с основанием.</p></article>
 </div></div></section>
 
 <section id="works"><div class="wrap reveal"><div class="eyebrow">Визуал</div><h2>Дерево должно<br>выглядеть дорого.</h2><div class="showcase">
@@ -62,13 +62,13 @@ footer{padding:30px 0 105px;color:#6e6861;font-size:11px;text-align:center}
 
 <section id="process"><div class="wrap reveal"><div class="eyebrow">Как всё происходит</div><h2>От фотографии<br>до готового пола.</h2><div class="process"><div class="step"><i>01</i><h3>Фото</h3><p>Вы присылаете несколько фотографий пола и коротко описываете задачу.</p></div><div class="step"><i>02</i><h3>Оценка</h3><p>Обсуждаем состояние, площадь, желаемый результат и варианты работ.</p></div><div class="step"><i>03</i><h3>Работа</h3><p>Подготавливаем помещение и выполняем работы по согласованному плану.</p></div><div class="step"><i>04</i><h3>Результат</h3><p>Принимаете готовый пол и получаете понятный итог без сюрпризов.</p></div></div></div></section>
 
-<section><div class="wrap reveal"><div class="eyebrow">Эффект до / после</div><h2>Иногда дереву<br>нужно просто вернуть шанс.</h2><div class="before"><div class="compare"><span class="tag left">ДО</span><img src="https://images.squarespace-cdn.com/content/v1/63a48af377400155742b860d/31b5f048-7fc4-4ec0-b3b7-e492b26a871b/Welcome%2Bbefore%2Bsanding%2B2.jpg" alt="До реставрации"></div><div class="compare"><span class="tag right">ПОСЛЕ</span><img src="https://images.squarespace-cdn.com/content/v1/63a48af377400155742b860d/e5ca7b09-bf43-4f32-b361-d7328391353a/Welcome%2Bjust%2Bbeen%2B%2Blacqured.jpg" alt="После реставрации"><div class="line"></div></div></div></div></section>
+<section><div class="wrap reveal"><div class="eyebrow">Эффект до / после</div><h2>Покажем разницу<br>между «до» и «после».</h2><div class="before"><div class="compare"><span class="tag left">ПРИМЕР «ДО»</span><img src="https://images.squarespace-cdn.com/content/v1/63a48af377400155742b860d/31b5f048-7fc4-4ec0-b3b7-e492b26a871b/Welcome%2Bbefore%2Bsanding%2B2.jpg" alt="Пример состояния пола до реставрации"></div><div class="compare"><span class="tag right">ПРИМЕР «ПОСЛЕ»</span><img src="https://images.squarespace-cdn.com/content/v1/63a48af377400155742b860d/e5ca7b09-bf43-4f32-b361-d7328391353a/Welcome%2Bjust%2Bbeen%2B%2Blacqured.jpg" alt="Пример пола после реставрации"><div class="line"></div></div></div></div></section>
 
-<section class="cta" id="contact"><div class="wrap reveal"><div class="ctaBox"><div class="eyebrow">Начнём с простого</div><h2>Отправьте фото пола — скажу, что с ним можно сделать.</h2><p>Не обязательно сразу заказывать выезд. Покажите пол, площадь и что вас не устраивает — обсудим варианты.</p><div class="ctaBtns"><a class="btn primary" href="https://wa.me/79095220333?text=Здравствуйте!%20Хочу%20оценить%20работу%20с%20паркетом." target="_blank">Написать в WhatsApp</a><a class="btn dark" href="https://t.me/He_Maks" target="_blank">Написать в Telegram</a><a class="btn dark" href="tel:+79095220333">+7 909 522-03-33</a></div></div></div></section>
+<section class="cta" id="contact"><div class="wrap reveal"><div class="ctaBox"><div class="eyebrow">Заказать замер</div><h2>Покажите пол — начнём с оценки.</h2><p>Напишите в WhatsApp или Telegram. Можно сразу отправить фото пола, площадь и город. Я подскажу, что имеет смысл делать и сориентирую по дальнейшим шагам.</p><div class="ctaBtns"><a class="btn primary" href="https://wa.me/79095220333?text=Здравствуйте!%20Хочу%20заказать%20замер.%20Город:%20Новокузнецк.%20Фото%20пола%20отправлю%20следующим%20сообщением." target="_blank">Заказать замер в WhatsApp</a><a class="btn dark" href="https://t.me/He_Maks" target="_blank">Написать в Telegram</a><a class="btn dark" href="tel:+79095220333">+7 909 522-03-33</a></div></div></div></section>
 </main>
 
-<div class="bottom"><div class="bottomIn"><a class="main" href="tel:+79095220333">Позвонить</a><a href="https://wa.me/79095220333" target="_blank">WhatsApp</a><a href="https://t.me/He_Maks" target="_blank">Telegram</a></div></div>
-<footer>ПАРКЕТ·НК · Реставрация и укладка деревянных полов · Новокузнецк</footer>
+<div class="bottom"><div class="bottomIn"><a class="main" href="https://wa.me/79095220333?text=Здравствуйте!%20Хочу%20заказать%20замер%20и%20оценку%20пола." target="_blank">Заказать замер</a><a href="tel:+79095220333">Позвонить</a><a href="https://t.me/He_Maks" target="_blank">Telegram</a></div></div>
+<footer>ПАРКЕТ·НК · Реставрация, шлифовка и укладка деревянных полов · Новокузнецк</footer>
 
 <script>
 document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.service').forEach(card=>{card.style.display=f==='all'||card.dataset.cat===f?'block':'none'})}));
