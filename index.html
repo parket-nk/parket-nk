@@ -38,7 +38,7 @@ button{font:inherit}
 .header-cta:hover{background:var(--gold);color:#111}
 
 .hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
-.hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,9,.88) 0%,rgba(8,9,9,.58) 48%,rgba(8,9,9,.45) 100%),linear-gradient(0deg,rgba(8,9,9,.88) 0%,transparent 45%),url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2200&q=88') center/cover;transform:scale(1.03);animation:heroZoom 12s ease-out forwards}
+.hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,9,.88) 0%,rgba(8,9,9,.58) 48%,rgba(8,9,9,.45) 100%),linear-gradient(0deg,rgba(8,9,9,.88) 0%,transparent 45%),url('https://images.portal.muenchen.de/000/000/309/937/versions/parkett-verlegen-muenchen-sbn_660x440_6a8317e6e26aa.png') center/cover;transform:scale(1.03);animation:heroZoom 12s ease-out forwards}
 @keyframes heroZoom{to{transform:scale(1)}}
 .hero-content{position:relative;z-index:2;padding:150px 0 74px;width:min(1180px,calc(100% - 48px));margin:auto}
 .eyebrow{display:flex;align-items:center;gap:12px;color:var(--gold2);font-size:11px;letter-spacing:.2em;text-transform:uppercase;margin-bottom:24px}
@@ -94,10 +94,16 @@ h2{font-size:clamp(34px,5vw,58px);line-height:1.05;letter-spacing:-.04em;margin:
 .proof-item p{margin:12px 0 0;color:var(--muted);font-size:12px}
 
 .tech-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}
-.tech-visual{min-height:500px;background:url('https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1400&q=85') center/cover;position:relative}
+.tech-visual{min-height:500px;background:linear-gradient(rgba(10,11,11,.18),rgba(10,11,11,.48)),url('https://hartungparkett.de/site/assets/files/12396/parkett_abschleifen.1200x0.jpg') center/cover;position:relative}
 .tech-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,11,11,.15),rgba(10,11,11,.72))}
 .tech-badge{position:absolute;z-index:2;right:24px;bottom:24px;border:1px solid rgba(255,255,255,.2);background:rgba(10,10,10,.65);backdrop-filter:blur(12px);padding:18px 20px}
 .tech-badge strong{display:block;font-size:20px}.tech-badge span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.machine-strip{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:30px}
+.machine-card{background:var(--panel);border:1px solid var(--line);padding:10px;transition:.35s var(--ease)}
+.machine-card:hover{border-color:var(--gold);transform:translateY(-4px)}
+.machine-card img{width:100%;height:130px;object-fit:contain;background:#ece9e2;display:block;margin-bottom:12px}
+.machine-card b{display:block;font-size:12px;letter-spacing:.08em;color:var(--gold2)}
+.machine-card span{display:block;font-size:10px;line-height:1.45;color:var(--muted);margin-top:5px}
 .tech-list{border-top:1px solid var(--line)}
 .tech-row{display:grid;grid-template-columns:55px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
 .tech-row .n{color:var(--gold);font-size:11px;padding-top:3px}
@@ -154,7 +160,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  .service:last-child{border-bottom:0}.service h3{margin-top:55px}
  .photo.tall{min-height:430px}.photo.small{min-height:280px}
  .proof-grid{grid-template-columns:1fr 1fr}.proof-item{padding:24px 18px}.proof-number{font-size:34px}
- .tech-visual{min-height:330px}.tech-row{grid-template-columns:35px 1fr;gap:12px}
+ .tech-visual{min-height:330px}.machine-strip{grid-template-columns:1fr 1fr}.machine-card img{height:105px}.tech-row{grid-template-columns:35px 1fr;gap:12px}
  .cta-inner{display:block}.cta .btn{margin-top:28px}
  .footer-grid{grid-template-columns:1fr}.footer-contact{grid-column:auto}
  .copyright{display:block}.copyright span{display:block;margin-top:8px}
@@ -191,7 +197,8 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   <p class="hero-sub">Реставрация, шлифовка и укладка деревянных полов с профессиональной техникой Lägler. 15 лет опыта и внимание к каждой детали.</p>
   <div class="actions">
    <a class="btn btn-primary" href="#contacts">Заказать замер <span>↗</span></a>
-   <a class="btn btn-ghost" href="tel:+79095220333">Позвонить напрямую</a>
+   <a class="btn btn-ghost" href="https://wa.me/79095220333" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+   <a class="btn btn-ghost" href="https://t.me/He_Maks" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
   </div>
  </div>
  <div class="hero-bottom">
@@ -219,9 +226,9 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  <div class="container">
   <div class="section-head reveal"><div><div class="kicker">Визуальный уровень</div><h2>Дерево любит<br>точность.</h2></div><p class="section-intro">Правильная техника, подготовка и финишное покрытие меняют не только внешний вид пола, но и ощущение всего помещения.</p></div>
   <div class="showcase reveal">
-   <div class="photo tall"><img loading="lazy" src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?auto=format&fit=crop&w=1500&q=88" alt="Деревянный пол после профессиональной обработки"><div class="photo-caption"><b>Финишная обработка</b><span>Ровная поверхность · глубокая фактура</span></div></div>
-   <div class="photo small"><img loading="lazy" src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=88" alt="Современный интерьер с деревянным полом"><div class="photo-caption"><b>Натуральное дерево</b><span>Когда пол становится частью интерьера</span></div></div>
-   <div class="photo small"><img loading="lazy" src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=88" alt="Премиальный интерьер с деревянным полом"><div class="photo-caption"><b>Аккуратность в деталях</b><span>Плинтус · примыкания · финиш</span></div></div>
+   <div class="photo tall"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/63a48af377400155742b860d/66b3a38c-4d28-4bf2-8ffe-9ff33211600d/Bob-sanding-floor.jpg" alt="Шлифовка паркета машиной Lägler Trio"><div class="photo-caption"><b>Шлифовка паркета</b><span>Точная обработка · подключённое пылеудаление</span></div></div>
+   <div class="photo small"><img loading="lazy" src="https://images.portal.muenchen.de/000/000/309/937/versions/parkett-verlegen-muenchen-sbn_660x440_6a8317e6e26aa.png" alt="Укладка премиального паркета ёлкой"><div class="photo-caption"><b>Укладка паркета</b><span>Премиальная ёлка · точная геометрия</span></div></div>
+   <div class="photo small"><img loading="lazy" src="https://storage.googleapis.com/joszaki-assets/profession_pics/parketta-lakkozas.jpg" alt="Нанесение лака на паркет"><div class="photo-caption"><b>Лак и финиш</b><span>Ровный слой · глубокий оттенок · защита</span></div></div>
   </div>
  </div>
 </section>
@@ -240,9 +247,13 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 <section class="section" id="technology">
  <div class="container">
   <div class="tech-grid">
-   <div class="tech-visual reveal"><div class="tech-badge"><strong>Lägler</strong><span>Hummel · Trio</span></div></div>
+   <div class="tech-visual reveal"><div class="tech-badge"><strong>Lägler</strong><span>Hummel · Trio · минимум пыли</span></div></div>
    <div class="reveal">
     <div class="kicker">Почему это важно</div><h2>Профессиональный результат начинается с техники.</h2>
+    <div class="machine-strip">
+     <div class="machine-card"><img src="https://hartungparkett.de/site/assets/files/12396/parkett_abschleifen.1200x0.jpg" alt="Lägler Hummel в работе"><b>LÄGLER HUMMEL</b><span>Основная шлифовка · высокая эффективность пылеудаления</span></div>
+     <div class="machine-card"><img src="https://www.laegler.com/fileadmin/user_upload/Downloads/Maschinenbilder/TRIO_mit_LED_2020-10-15.png" alt="Lägler Trio"><b>LÄGLER TRIO</b><span>Финишная шлифовка · равномерная поверхность</span></div>
+    </div>
     <div class="tech-list" style="margin-top:35px">
      <div class="tech-row"><div class="n">01</div><div><h3>Немецкая техника Lägler</h3><p>Hummel и Trio позволяют выполнять последовательную обработку поверхности с высокой точностью.</p></div></div>
      <div class="tech-row"><div class="n">02</div><div><h3>Минимум пыли</h3><p>Используем профессиональное пылеудаление и следим за порядком на объекте.</p></div></div>
