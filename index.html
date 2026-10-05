@@ -19,7 +19,19 @@ footer{background:#1a120c;color:#aaa;text-align:center;padding:24px 20px;font-si
 .mobile-bar{display:none}
 @media(max-width:850px){.services-grid{grid-template-columns:repeat(2,1fr)}.portfolio-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.header-phone{font-size:.86rem}.header-right{gap:8px}.hero{padding:72px 0 52px}.hero h1{font-size:2.05rem}.hero p{font-size:1rem}.hero-btns .btn{width:100%}.hero-note{gap:15px}.services-grid,.portfolio-grid{grid-template-columns:1fr}.portfolio-img{height:220px}section{padding:54px 0}.contact{padding-bottom:105px}.mobile-bar{display:grid;position:fixed;bottom:0;left:0;right:0;z-index:100;grid-template-columns:1.25fr 1fr 1fr;gap:6px;padding:8px 9px calc(8px + env(safe-area-inset-bottom));background:rgba(26,18,12,.96);backdrop-filter:blur(12px)}.mobile-bar a{height:46px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;background:#30231c;color:#fff}.mobile-bar .main{background:#c9864b;color:#fff}}
-</style>
+
+        /* Плавающая кнопка заказа замера */
+        .floating-cta{position:fixed;right:24px;bottom:24px;z-index:1100}
+        .floating-main{border:1px solid var(--accent);background:var(--accent);color:var(--bg-main);padding:14px 22px;border-radius:6px;font-weight:800;cursor:pointer;box-shadow:0 8px 30px rgba(0,0,0,.45);animation:floatPulse 2.8s ease-in-out infinite}
+        .floating-main:hover{background:#e5c35b;transform:translateY(-2px)}
+        .floating-menu{display:none;position:absolute;right:0;bottom:62px;width:230px;background:#202020;border:1px solid var(--border-color);padding:10px;box-shadow:0 15px 40px rgba(0,0,0,.5)}
+        .floating-cta.open .floating-menu{display:grid;gap:7px}
+        .floating-menu a{padding:12px 14px;border:1px solid #3a3a3a;background:#292929;font-weight:700;font-size:.9rem}
+        .floating-menu a:hover{border-color:var(--accent);color:var(--accent)}
+        .email-link{color:var(--accent);font-weight:600}
+        @keyframes floatPulse{0%,100%{box-shadow:0 8px 30px rgba(0,0,0,.45)}50%{box-shadow:0 8px 32px rgba(212,175,55,.28)}}
+        @media(max-width:768px){.floating-cta{right:14px;bottom:14px}.floating-main{padding:13px 17px;font-size:.88rem}.floating-menu{bottom:58px;width:215px}}
+    </style>
 </head>
 <body>
 <header><div class="container header-inner"><a href="#top" class="logo">ПАРКЕТ<span>·</span>НК</a><div class="header-right"><a href="tel:+79095220333" class="header-phone">+7 909 522-03-33</a></div></div></header>
