@@ -229,7 +229,23 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 .hero-slide-actions{margin-top:28px}.hero-slide-actions .btn{min-height:48px}
 @media(max-width:640px){.hero-slide-actions{display:none}}
 </style>
-</head>
+<style>
+.hero-stat{padding:14px 0;display:flex;align-items:center;gap:12px;border-right:1px solid rgba(255,255,255,.08);font-family:Manrope,Arial,sans-serif}
+.hero-stat:not(:first-child){padding-left:28px}.hero-stat:last-child{border-right:0}
+.hero-stat-mark{width:30px;height:30px;flex:0 0 30px;display:grid;place-items:center;border:1px solid rgba(197,162,106,.55);color:var(--gold2);font-size:12px;font-weight:700}
+.hero-stat-copy{display:flex;flex-direction:column;gap:1px}
+.hero-stat-copy b{font-size:11px;line-height:1.15;letter-spacing:.09em;white-space:nowrap}
+.hero-stat-copy small{font-size:8px;line-height:1.2;color:#8f9292;letter-spacing:.16em;white-space:nowrap}
+@media(max-width:640px){
+ .hero-bottom{background:rgba(10,11,11,.72);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,.1)}
+ .hero-bottom-inner{width:calc(100% - 20px);grid-template-columns:1fr 1.15fr 1.25fr}
+ .hero-stat{padding:10px 7px!important;gap:7px;justify-content:center}
+ .hero-stat:not(:first-child){padding-left:7px!important}
+ .hero-stat-mark{width:24px;height:24px;flex-basis:24px;font-size:9px}
+ .hero-stat-copy b{font-size:8px;letter-spacing:.07em}
+ .hero-stat-copy small{font-size:6.5px;letter-spacing:.11em}
+}
+</style></head>
 <body>
 <div class="scrollbar" id="scrollbar"></div>
 <div class="topline"></div>
@@ -307,9 +323,9 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 
  <div class="hero-bottom">
   <div class="hero-bottom-inner">
-   <div class="hero-stat"><b>15 ЛЕТ</b><span>ОПЫТА</span></div>
-   <div class="hero-stat"><b>LÄGLER</b><span>HUMMEL · TRIO</span></div>
-   <div class="hero-stat"><b>НОВОКУЗНЕЦК</b><span>КУЗБАСС</span></div>
+   <div class="hero-stat"><span class="hero-stat-mark">15</span><span class="hero-stat-copy"><b>ЛЕТ</b><small>ОПЫТА</small></span></div>
+   <div class="hero-stat"><span class="hero-stat-mark">L</span><span class="hero-stat-copy"><b>LÄGLER</b><small>HUMMEL · TRIO</small></span></div>
+   <div class="hero-stat"><span class="hero-stat-mark">⌖</span><span class="hero-stat-copy"><b>НОВОКУЗНЕЦК</b><small>КУЗБАСС</small></span></div>
   </div>
  </div>
 </section>
