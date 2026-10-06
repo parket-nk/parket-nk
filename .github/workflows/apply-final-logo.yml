@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Apply logo and Instagram layout
+      - name: Apply final logo and Instagram layout
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -23,26 +23,17 @@ jobs:
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
 
-          logo = '<a class="logo" href="#" aria-label="Сибирь Паркет"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span>СИБИРЬ</span><span>ПАРКЕТ</span></span></a>'
+          # Keep the existing approved wordmark and place Instagram as a simple icon directly to its right on desktop.
+          logo = '''<a class="logo" href="#" aria-label="Сибирь Паркет"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span>СИБИРЬ</span><span>ПАРКЕТ</span></span><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></a>'''
           s, n = re.subn(r'<a class="logo" href="#" aria-label="Сибирь Паркет">.*?</a>', logo, s, count=1, flags=re.S)
           if n != 1:
               raise SystemExit('logo block not found')
 
-          # Desktop: Instagram sits in the header immediately before the existing «Связаться» button.
-          desktop_instagram = '''<a class="header-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span><span>Instagram</span>
-          </a>'''
-          if 'class="header-instagram"' not in s:
-              s, n = re.subn(r'(\s*<a class="header-cta" href="#contacts">Связаться</a>)', desktop_instagram + r'\1', s, count=1)
-              if n != 1:
-                  raise SystemExit('header CTA not found')
+          # Remove the old Instagram item from the desktop contact group.
+          s = re.sub(r'\s*<a class="header-instagram".*?</a>', '', s, count=1, flags=re.S)
 
-          # Mobile: four equal actions — WhatsApp, Telegram, Instagram, Позвонить.
-          mobile_instagram = ''' <a class="m-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer"><span class="m-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span><span>Instagram</span></a>\n'''
-          if 'class="m-instagram"' not in s:
-              s, n = re.subn(r'(\s*<a href="tel:\+79511804499">)', '\n' + mobile_instagram + r'\1', s, count=1)
-              if n != 1:
-                  raise SystemExit('mobile phone action not found')
+          # Remove the Instagram action from the mobile bottom bar and restore the original three-button layout.
+          s = re.sub(r'\s*<a class="m-instagram".*?</a>', '', s, count=1, flags=re.S)
 
           marker = '/* FINAL SIBIR PARKET LOGO */'
           css = marker + '''
@@ -50,14 +41,14 @@ jobs:
           .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;background-image:url("assets/sibir-parket-final.svg");background-repeat:no-repeat;background-position:center;background-size:134%;mask-image:none;-webkit-mask-image:none}
           .logo-wordmark{display:flex;align-items:baseline;gap:11px;white-space:nowrap;font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;line-height:.92;letter-spacing:.045em;color:#f4f1eb}
           .logo-wordmark span{font:inherit;line-height:inherit;color:#f4f1eb}.logo-wordmark span:last-child{color:var(--gold2)}
-          .header-instagram{display:inline-flex;align-items:center;gap:7px;color:var(--gold2);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:.3s var(--ease)}
-          .header-instagram:hover{color:#fff;transform:translateY(-1px)}
+          .logo-instagram{display:inline-flex;align-items:center;justify-content:center;margin-left:3px;color:var(--gold2);transition:.3s var(--ease);flex:0 0 auto}
+          .logo-instagram:hover{color:#fff;transform:translateY(-1px)}
+          .logo-instagram .ig-icon{width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center}
+          .logo-instagram .ig-icon svg{width:21px;height:21px;display:block}
           .ig-icon{width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center}.ig-icon svg{width:20px;height:20px;display:block}
-          .m-instagram{color:var(--gold2)!important}
-          .m-instagram .m-icon svg{fill:none!important;stroke:currentColor!important;stroke-width:1.8!important;stroke-linecap:round!important;stroke-linejoin:round!important}
-          @media(max-width:900px){.header-instagram{display:none}}
+          @media(max-width:900px){.logo-instagram{display:none}}
           @media(max-width:640px){.logo-mark-image{width:36px;height:36px;flex-basis:36px;background-size:134%}.logo{gap:10px}.logo-wordmark{font-size:20px;gap:8px;letter-spacing:.035em}}
-          @media(max-width:900px){.mobile-bar{grid-template-columns:repeat(4,1fr)}.mobile-bar a{gap:5px;font-size:9px}.mobile-bar .m-icon{width:16px;height:16px;flex-basis:16px}.mobile-bar .m-icon svg{width:16px;height:16px}}
+          @media(max-width:640px){.mobile-bar{grid-template-columns:repeat(3,1fr)}.mobile-bar a{gap:7px;font-size:10px}.mobile-bar .m-icon{width:17px;height:17px;flex-basis:17px}.mobile-bar .m-icon svg{width:17px;height:17px}}
           '''
           s = re.sub(re.escape(marker) + r'.*?(?=</style>)', '', s, count=1, flags=re.S)
           s = s.replace('</style>', css + '</style>', 1)
@@ -75,9 +66,10 @@ jobs:
           grep -q 'ПАРКЕТ' index.html
           grep -q 'mask-image:none' index.html
           grep -q 'background-size:134%' index.html
-          grep -q 'header-instagram' index.html
-          grep -q 'm-instagram' index.html
-          grep -q 'grid-template-columns:repeat(4,1fr)' index.html
+          grep -q 'logo-instagram' index.html
+          grep -q 'parket.nk' index.html
+          ! grep -q 'class="m-instagram"' index.html
+          grep -q 'grid-template-columns:repeat(3,1fr)' index.html
 
       - name: Commit changes
         run: |
@@ -85,5 +77,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Add Instagram to header and mobile contact bar [skip ci]"
+          git commit -m "Place Instagram beside desktop brand and restore mobile bar [skip ci]"
           git push
