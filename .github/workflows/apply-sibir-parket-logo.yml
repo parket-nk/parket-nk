@@ -1,21 +1,17 @@
 name: Apply Siberia Parket logo
 
-on:
-  push:
-    branches:
-      - main
+on: push
 
 permissions:
   contents: write
 
 jobs:
-  apply-logo:
+  polish-logo:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - name: Polish logo presentation
-        shell: bash
+      - name: Update logo presentation
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -29,48 +25,49 @@ jobs:
           if n != 1:
               raise SystemExit('logo block not found')
 
-          # Use the exact reference artwork as a luminance mask: this removes ONLY its
-          # dark rectangular background while preserving the parquet mark's silhouette.
           marker = '/* SIBIR PARKET LOGO TYPOGRAPHY */'
           css = marker + '''
-.logo{display:flex;align-items:center;gap:14px;font-family:Manrope,Arial,sans-serif;line-height:1;white-space:nowrap}
-.logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background:var(--gold2);-webkit-mask-image:url("assets/sibir-parket-reference-logo.svg");mask-image:url("assets/sibir-parket-reference-logo.svg");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
-.logo-wordmark{display:flex;align-items:baseline;gap:11px;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:600;line-height:.9;letter-spacing:.045em;color:#f4f1eb}
-.logo-wordmark span{font:inherit;line-height:inherit;color:inherit}
-.logo-wordmark span:last-child{color:var(--gold2)}
-@media(max-width:640px){.logo-mark-image{width:36px;height:36px;flex-basis:36px}.logo{gap:10px}.logo-wordmark{font-size:19px;gap:8px;letter-spacing:.035em}}
-'''
+          .logo{display:flex;align-items:center;gap:14px;font-family:Manrope,Arial,sans-serif;line-height:1;white-space:nowrap}
+          .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background:var(--gold2);-webkit-mask-image:url("assets/sibir-parket-reference-logo.svg");mask-image:url("assets/sibir-parket-reference-logo.svg");-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain}
+          .logo-wordmark{display:flex;align-items:baseline;gap:11px;font-family:"Cormorant Garamond",Georgia,serif;font-size:24px;font-weight:600;line-height:.9;letter-spacing:.045em;color:#f4f1eb}
+          .logo-wordmark span{font:inherit;line-height:inherit;color:inherit}
+          .logo-wordmark span:last-child{color:var(--gold2)}
+          @media(max-width:640px){.logo-mark-image{width:36px;height:36px;flex-basis:36px}.logo{gap:10px}.logo-wordmark{font-size:19px;gap:8px;letter-spacing:.035em}}
+          '''
           s = re.sub(re.escape(marker) + r'.*?(?=</style>)', '', s, count=1, flags=re.S)
           s = s.replace('</style>', css + '</style>', 1)
 
-          # Keep the exact reference for the browser tab, but render it through a
-          # transparent luminance mask so the dark source rectangle cannot appear.
-          favicon = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
-          <defs><mask id="m" maskUnits="userSpaceOnUse" x="0" y="0" width="96" height="96" mask-type="luminance"><image href="sibir-parket-reference-logo.svg" x="0" y="0" width="96" height="96"/></mask></defs>
-          <rect width="96" height="96" fill="#e0c28a" mask="url(#m)"/>
-          </svg>'''
-          Path('assets/sibir-parket-favicon.svg').write_text(favicon, encoding='utf-8')
           s = re.sub(r'<link rel="icon"[^>]*>', '<link rel="icon" type="image/svg+xml" href="assets/sibir-parket-favicon.svg">', s, count=1)
           p.write_text(s, encoding='utf-8')
           PY
 
-      - name: Verify visual implementation
+      - name: Create transparent favicon
+        run: |
+          cat > assets/sibir-parket-favicon.svg <<'SVG'
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+            <defs>
+              <mask id="logoMask" maskUnits="userSpaceOnUse" x="0" y="0" width="96" height="96" mask-type="luminance">
+                <image href="sibir-parket-reference-logo.svg" x="0" y="0" width="96" height="96"/>
+              </mask>
+            </defs>
+            <rect width="96" height="96" fill="#e0c28a" mask="url(#logoMask)"/>
+          </svg>
+          SVG
+
+      - name: Verify
         run: |
           test -f assets/sibir-parket-reference-logo.svg
           test -f assets/sibir-parket-favicon.svg
-          grep -q 'sibir-parket-reference-logo.svg' index.html
-          grep -q 'sibir-parket-favicon.svg' index.html
           grep -q 'Cormorant Garamond' index.html
-          grep -q 'SIBIR PARKET LOGO TYPOGRAPHY' index.html
+          grep -q 'sibir-parket-favicon.svg' index.html
           grep -q 'СИБИРЬ' index.html
           grep -q 'ПАРКЕТ' index.html
 
-      - name: Commit
-        shell: bash
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html assets/sibir-parket-favicon.svg
           git diff --cached --quiet && exit 0
-          git commit -m "Polish logo background and premium wordmark [skip ci]"
+          git commit -m "Polish Siberia Parket logo and typography [skip ci]"
           git push
