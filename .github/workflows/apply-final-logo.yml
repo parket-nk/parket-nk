@@ -31,7 +31,7 @@ jobs:
           marker = '/* FINAL SIBIR PARKET LOGO */'
           css = marker + '''
           .logo{display:flex;align-items:center;gap:14px;line-height:1;white-space:nowrap}
-          .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;background-image:url("assets/sibir-parket-transparent.svg");background-repeat:no-repeat;background-position:center;background-size:contain}
+          .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;background-image:url("assets/sibir-parket-final.svg");background-repeat:no-repeat;background-position:center;background-size:contain}
           .logo-wordmark{display:flex;align-items:baseline;gap:11px;white-space:nowrap;font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;line-height:.92;letter-spacing:.045em;color:#f4f1eb}
           .logo-wordmark span{font:inherit;line-height:inherit;color:#f4f1eb}
           .logo-wordmark span:last-child{color:var(--gold2)}
@@ -39,15 +39,14 @@ jobs:
           '''
           s = re.sub(re.escape(marker) + r'.*?(?=</style>)', '', s, count=1, flags=re.S)
           s = s.replace('</style>', css + '</style>', 1)
-
-          s = re.sub(r'<link rel="icon"[^>]*>', '<link rel="icon" type="image/svg+xml" href="assets/sibir-parket-transparent.svg">', s, count=1)
+          s = re.sub(r'<link rel="icon"[^>]*>', '<link rel="icon" type="image/svg+xml" href="assets/sibir-parket-final.svg">', s, count=1)
           p.write_text(s, encoding='utf-8')
           PY
 
-      - name: Verify logo implementation
+      - name: Verify exact logo implementation
         run: |
-          test -f assets/sibir-parket-transparent.svg
-          grep -q 'assets/sibir-parket-transparent.svg' index.html
+          test -f assets/sibir-parket-final.svg
+          grep -q 'assets/sibir-parket-final.svg' index.html
           grep -q 'Cormorant Garamond' index.html
           grep -q 'FINAL SIBIR PARKET LOGO' index.html
           grep -q 'СИБИРЬ' index.html
@@ -59,7 +58,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html assets/sibir-parket-transparent.svg
+          git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Fix exact parquet logo background and favicon [skip ci]"
+          git commit -m "Use exact transparent parquet logo [skip ci]"
           git push
