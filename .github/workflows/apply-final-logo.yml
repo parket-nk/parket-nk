@@ -37,9 +37,6 @@ jobs:
               raise SystemExit('header nav not found')
           s = s[:insert_at] + logo + '\n' + s[insert_at:]
 
-          # Remove the desktop Instagram text link near the phone.
-          s = re.sub(r'\s*<a class="header-instagram".*?</a>', '', s, count=1, flags=re.S)
-
           s = re.sub(r'\s*<a class="m-instagram".*?</a>', '', s, count=1, flags=re.S)
 
           marker = '/* FINAL PARKET-HALL LOGO */'
@@ -53,9 +50,6 @@ jobs:
           .logo-instagram:hover{color:#fff;transform:translateY(-1px)}
           .logo-instagram .ig-icon{width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center}
           .logo-instagram .ig-icon svg{width:21px;height:21px;display:block}
-          .header-instagram{display:inline-flex;align-items:center;color:var(--gold2);text-decoration:none;margin-right:18px;font-size:13px;font-weight:700;letter-spacing:.06em;transition:.3s var(--ease)}
-          .header-instagram:hover{color:#fff}
-          @media(max-width:900px){.header-instagram{display:none}}
           @media(max-width:640px){
             .header-contact{display:none}
             .logo{width:100%;justify-content:space-between;gap:0}
