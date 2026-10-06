@@ -519,7 +519,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
    <div class="order-field"><label for="orderArea">Площадь, м²</label><input id="orderArea" name="area" inputmode="decimal" placeholder="Например, 45"></div>
    <div class="order-field"><label for="orderMessage">Что нужно сделать?</label><textarea id="orderMessage" name="message" placeholder="Например: восстановить старый паркет"></textarea></div>
    <button class="order-submit" type="submit">Отправить заявку</button>
-   <p class="order-note">Нажимая «Отправить заявку», вы соглашаетесь на обработку указанных данных для связи по заявке.</p>
+   <label class="order-consent"><input id="orderConsent" name="privacy_consent" type="checkbox" value="Согласие на обработку персональных данных" required><span>Соглашаюсь на обработку моих персональных данных для связи по заявке. <a href="privacy.html" target="_blank" rel="noopener noreferrer">Политика обработки персональных данных</a></span></label>
   </form>
   <iframe name="formboostFrame" id="formboostFrame" title="Formboost" style="display:none"></iframe>
   <div class="order-success" id="orderSuccess">
@@ -592,7 +592,7 @@ orderClose.addEventListener('click',closeOrderModal);
 orderDone.addEventListener('click',closeOrderModal);
 orderModal.addEventListener('click',e=>{if(e.target===orderModal)closeOrderModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&orderModal.classList.contains('open'))closeOrderModal()});
-orderForm.addEventListener('submit',()=>{const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';setTimeout(()=>{orderForm.classList.add('hidden');orderSuccess.classList.add('show');},500);});
+orderForm.addEventListener('submit',()=>{const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';setTimeout(()=>{orderForm.classList.add('hidden');orderSuccess.classList.add('show');},700);});
 </script>
 
 </body>
