@@ -303,36 +303,6 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   .logo-instagram .ig-icon,.logo-instagram .ig-icon svg{width:25px;height:25px}
 }
 @media(max-width:640px){.mobile-bar{grid-template-columns:repeat(3,1fr)}.mobile-bar a{gap:7px;font-size:10px}.mobile-bar .m-icon{width:17px;height:17px;flex-basis:17px}.mobile-bar .m-icon svg{width:17px;height:17px}}
-
-/* ORDER FORM MODAL */
-.order-modal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(0,0,0,.72);backdrop-filter:blur(12px);opacity:0;visibility:hidden;pointer-events:none;transition:.25s var(--ease)}
-.order-modal.open{opacity:1;visibility:visible;pointer-events:auto}
-.order-dialog{width:min(520px,100%);max-height:min(760px,calc(100vh - 40px));overflow:auto;background:#151718;border:1px solid rgba(197,162,106,.35);box-shadow:0 25px 80px rgba(0,0,0,.55);padding:30px;position:relative;transform:translateY(16px) scale(.98);transition:.3s var(--ease)}
-.order-modal.open .order-dialog{transform:none}
-.order-close{position:absolute;top:12px;right:12px;width:40px;height:40px;border:1px solid var(--line);background:transparent;color:#fff;cursor:pointer;font-size:24px;line-height:1}
-.order-close:hover{border-color:var(--gold);color:var(--gold2)}
-.order-kicker{color:var(--gold);font-size:10px;text-transform:uppercase;letter-spacing:.18em;margin-bottom:10px}
-.order-dialog h2{font-size:34px;margin:0 45px 8px 0}
-.order-dialog .order-lead{color:var(--muted);font-size:13px;margin:0 0 24px}
-.order-form{display:grid;gap:13px}
-.order-field{display:grid;gap:7px}
-.order-field label{font-size:10px;color:#aaa;text-transform:uppercase;letter-spacing:.1em}
-.order-field input,.order-field textarea{width:100%;border:1px solid var(--line);background:#0e1010;color:var(--text);padding:13px 14px;outline:none;font:500 13px Manrope,Arial,sans-serif;border-radius:0}
-.order-field input:focus,.order-field textarea:focus{border-color:var(--gold)}
-.order-field textarea{min-height:92px;resize:vertical}
-.order-submit{width:100%;border:1px solid var(--gold);background:var(--gold);color:#111;min-height:52px;font:800 12px Manrope,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;margin-top:4px}
-.order-submit:hover{background:var(--gold2)}
-.order-note{font-size:10px;color:#707272;line-height:1.5;margin:0}
-.order-success{display:none;text-align:center;padding:25px 5px 8px}
-.order-success.show{display:block}
-.order-success h3{font-size:25px;margin:0 0 8px}
-.order-success p{color:var(--muted);font-size:13px;margin:0 0 20px}
-.order-form.hidden{display:none}
-@media(max-width:640px){
- .order-dialog{padding:24px 18px}
- .order-dialog h2{font-size:29px}
-}
-
 </style>
 </head>
 <body>
@@ -342,6 +312,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 <header class="header" id="header">
  <div class="header-inner">
   
+
 
 
 
