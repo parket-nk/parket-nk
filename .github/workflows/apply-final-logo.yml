@@ -43,10 +43,10 @@ jobs:
           css = marker + '''
           .logo{display:flex;align-items:center;gap:12px;line-height:1;white-space:nowrap}
           .logo-brand{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none}
-          .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;background-image:url("assets/sibir-parket-final.svg");background-repeat:no-repeat;background-position:center;background-size:134%;mask-image:none;-webkit-mask-image:none}
+          .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;transition:filter .28s var(--ease);background-image:url("assets/sibir-parket-final.svg");background-repeat:no-repeat;background-position:center;background-size:134%;mask-image:none;-webkit-mask-image:none}
           .logo-wordmark{display:flex;align-items:baseline;gap:11px;white-space:nowrap;font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;line-height:.92;letter-spacing:.045em;color:#f4f1eb}
           .logo-wordmark span{font:inherit;line-height:inherit;color:#f4f1eb;transition:color .28s var(--ease)}.logo-wordmark span:last-child{color:var(--gold2)}
-          @media (hover:hover) and (pointer:fine){.logo-wordmark span:first-child:hover{color:var(--gold2)}.logo-wordmark span:last-child:hover{color:#fff}}
+          @media (hover:hover) and (pointer:fine){.logo-brand:hover .logo-mark-image{filter:brightness(0) invert(1)}.logo-brand:hover .logo-wordmark span{color:#fff}}
           .logo-instagram{display:none;align-items:center;justify-content:center;color:var(--gold2);transition:.3s var(--ease);flex:0 0 auto}
           .logo-instagram:hover{color:#fff;transform:translateY(-1px)}
           .logo-instagram .ig-icon{width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center}
