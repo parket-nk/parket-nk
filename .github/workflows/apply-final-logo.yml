@@ -23,31 +23,42 @@ jobs:
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
 
-          # Keep the existing approved wordmark and place Instagram as a simple icon directly to its right on desktop.
-          logo = '''<a class="logo" href="#" aria-label="Сибирь Паркет"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span>СИБИРЬ</span><span>ПАРКЕТ</span></span><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></a>'''
-          s, n = re.subn(r'<a class="logo" href="#" aria-label="Сибирь Паркет">.*?</a>', logo, s, count=1, flags=re.S)
+          # Remove the current logo block safely, whether it is the old single link or the previous nested version.
+          s, n = re.subn(r'<a class="logo"[^>]*>.*?</a>\s*</a>', '', s, count=1, flags=re.S)
+          if n == 0:
+              s, n = re.subn(r'<a class="logo"[^>]*>.*?</a>', '', s, count=1, flags=re.S)
           if n != 1:
               raise SystemExit('logo block not found')
 
-          # Remove the old Instagram item from the desktop contact group.
+          # Valid HTML: brand link and Instagram link are siblings inside the logo wrapper.
+          logo = '''<div class="logo"><a class="logo-brand" href="#" aria-label="Сибирь Паркет"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span>СИБИРЬ</span><span>ПАРКЕТ</span></span></a><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></div>'''
+
+          # Put the new logo wrapper where the old logo started.
+          header_start = s.find('<header class="header"')
+          insert_at = s.find('  <nav class="nav">', header_start)
+          if insert_at == -1:
+              raise SystemExit('header nav not found')
+          s = s[:insert_at] + logo + '\n' + s[insert_at:]
+
+          # Remove any old desktop Instagram item from the contact group.
           s = re.sub(r'\s*<a class="header-instagram".*?</a>', '', s, count=1, flags=re.S)
 
-          # Remove the Instagram action from the mobile bottom bar and restore the original three-button layout.
+          # Remove Instagram from the mobile bottom bar: keep exactly WhatsApp, Telegram, Call.
           s = re.sub(r'\s*<a class="m-instagram".*?</a>', '', s, count=1, flags=re.S)
 
           marker = '/* FINAL SIBIR PARKET LOGO */'
           css = marker + '''
-          .logo{display:flex;align-items:center;gap:14px;line-height:1;white-space:nowrap}
+          .logo{display:flex;align-items:center;gap:12px;line-height:1;white-space:nowrap}
+          .logo-brand{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none}
           .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;background-image:url("assets/sibir-parket-final.svg");background-repeat:no-repeat;background-position:center;background-size:134%;mask-image:none;-webkit-mask-image:none}
           .logo-wordmark{display:flex;align-items:baseline;gap:11px;white-space:nowrap;font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;line-height:.92;letter-spacing:.045em;color:#f4f1eb}
           .logo-wordmark span{font:inherit;line-height:inherit;color:#f4f1eb}.logo-wordmark span:last-child{color:var(--gold2)}
-          .logo-instagram{display:inline-flex;align-items:center;justify-content:center;margin-left:3px;color:var(--gold2);transition:.3s var(--ease);flex:0 0 auto}
+          .logo-instagram{display:inline-flex;align-items:center;justify-content:center;color:var(--gold2);transition:.3s var(--ease);flex:0 0 auto}
           .logo-instagram:hover{color:#fff;transform:translateY(-1px)}
           .logo-instagram .ig-icon{width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center}
           .logo-instagram .ig-icon svg{width:21px;height:21px;display:block}
-          .ig-icon{width:20px;height:20px;display:inline-flex;align-items:center;justify-content:center}.ig-icon svg{width:20px;height:20px;display:block}
           @media(max-width:900px){.logo-instagram{display:none}}
-          @media(max-width:640px){.logo-mark-image{width:36px;height:36px;flex-basis:36px;background-size:134%}.logo{gap:10px}.logo-wordmark{font-size:20px;gap:8px;letter-spacing:.035em}}
+          @media(max-width:640px){.logo-brand{gap:10px}.logo-mark-image{width:36px;height:36px;flex-basis:36px;background-size:134%}.logo-wordmark{font-size:20px;gap:8px;letter-spacing:.035em}.logo{gap:10px}}
           @media(max-width:640px){.mobile-bar{grid-template-columns:repeat(3,1fr)}.mobile-bar a{gap:7px;font-size:10px}.mobile-bar .m-icon{width:17px;height:17px;flex-basis:17px}.mobile-bar .m-icon svg{width:17px;height:17px}}
           '''
           s = re.sub(re.escape(marker) + r'.*?(?=</style>)', '', s, count=1, flags=re.S)
@@ -62,14 +73,11 @@ jobs:
           grep -q 'assets/sibir-parket-final.svg' index.html
           grep -q 'Cormorant Garamond' index.html
           grep -q 'FINAL SIBIR PARKET LOGO' index.html
-          grep -q 'СИБИРЬ' index.html
-          grep -q 'ПАРКЕТ' index.html
-          grep -q 'mask-image:none' index.html
-          grep -q 'background-size:134%' index.html
           grep -q 'logo-instagram' index.html
           grep -q 'parket.nk' index.html
           ! grep -q 'class="m-instagram"' index.html
           grep -q 'grid-template-columns:repeat(3,1fr)' index.html
+          grep -q 'logo-brand' index.html
 
       - name: Commit changes
         run: |
@@ -77,5 +85,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Place Instagram beside desktop brand and restore mobile bar [skip ci]"
+          git commit -m "Place Instagram beside brand and restore mobile bar [skip ci]"
           git push
