@@ -39,15 +39,6 @@ jobs:
 
           s = re.sub(r'\s*<a class="m-instagram".*?</a>', '', s, count=1, flags=re.S)
 
-          # Keep the modal on the same page and submit to Formboost via JSON.
-          s = re.sub(r'(<form[^>]*id="orderForm"[^>]*?)\s+target="formboostFrame"', r'\1', s, count=1, flags=re.S)
-          old_submit = "orderForm.addEventListener('submit',async e=>{e.preventDefault();const phone=document.getElementById('orderPhone');const digits=phone.value.replace(/\\D/g,'');const hasLetters=/[^0-9+()\\s-]/.test(phone.value);if(hasLetters){phone.classList.add('phone-invalid');phoneError.classList.add('show');phone.focus();return;}const valid=(digits.length===11&&(digits.startsWith('7')||digits.startsWith('8')))||(digits.length===10&&digits.startsWith('9'));if(!valid){phone.setCustomValidity('Введите корректный номер телефона');phone.reportValidity();phone.setCustomValidity('');return;}const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';try{const response=await fetch(orderForm.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(orderForm),keepalive:true});if(!response.ok)throw new Error('HTTP '+response.status);orderForm.classList.add('hidden');orderSuccess.classList.add('show');}catch(err){btn.disabled=false;btn.textContent='ОТПРАВИТЬ ЗАЯВКУ';alert('Не удалось отправить заявку. Попробуйте ещё раз.');}});"
-          new_submit = "orderForm.addEventListener('submit',async e=>{e.preventDefault();const phone=document.getElementById('orderPhone');const digits=phone.value.replace(/\\D/g,'');const hasLetters=/[^0-9+()\\s-]/.test(phone.value);if(hasLetters){phone.classList.add('phone-invalid');phoneError.classList.add('show');phone.focus();return;}const valid=(digits.length===11&&(digits.startsWith('7')||digits.startsWith('8')))||(digits.length===10&&digits.startsWith('9'));if(!valid){phone.setCustomValidity('Введите корректный номер телефона');phone.reportValidity();phone.setCustomValidity('');return;}const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';try{const data=Object.fromEntries(new FormData(orderForm));const response=await fetch(orderForm.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),keepalive:true});if(!response.ok)throw new Error('HTTP '+response.status);orderForm.classList.add('hidden');orderSuccess.classList.add('show');}catch(err){btn.disabled=false;btn.textContent='ОТПРАВИТЬ ЗАЯВКУ';alert('Не удалось отправить заявку. Попробуйте ещё раз.');}});"
-          if old_submit in s:
-              s = s.replace(old_submit, new_submit, 1)
-          else:
-              raise SystemExit('current order submit handler not found')
-
           marker = '/* FINAL PARKET-HALL LOGO */'
           css = marker + '''
           .logo{display:flex;align-items:center;gap:12px;line-height:1;white-space:nowrap}
@@ -94,8 +85,11 @@ jobs:
           grep -q 'header-contact{display:none}' index.html
           grep -q 'logo-instagram{display:inline-flex' index.html
           grep -q 'width:25px;height:25px' index.html
-          grep -q 'Content-Type.*application/json' index.html
-          grep -q 'Accept.*application/json' index.html
+          grep -q 'hero-stat:nth-child(3) span:after{content:"КЕМЕРОВО"' index.html
+          grep -q '<b>НОВОКУЗНЕЦК</b><span>КУЗБАСС</span>' index.html
+          grep -q "orderForm.addEventListener('submit'" index.html
+          grep -q "Content-Type':'application/json'" index.html
+          grep -q "Accept':'application/json'" index.html
           ! grep -q "mode:'no-cors'" index.html
 
       - name: Commit changes
@@ -104,5 +98,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Change desktop location to Kemerovo [skip ci]"
+          git commit -m "Apply desktop location label [skip ci]"
           git push
