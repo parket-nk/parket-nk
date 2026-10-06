@@ -542,7 +542,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   <div class="order-kicker">ПАРКЕТ-ХОЛЛ · ЗАМЕР</div>
   <h2 id="orderTitle">Заказать замер</h2>
   <p class="order-lead">Оставьте контакты — свяжемся с вами и договоримся о времени замера.</p>
-  <form class="order-form" action="https://formboost.app/f/q3oluts6" method="POST" id="orderForm">
+  <form class="order-form" action="https://formboost.app/f/q3oluts6" method="POST" target="formboostFrame" id="orderForm">
    <div class="order-field"><label for="orderName">Ваше имя</label><input id="orderName" name="name" autocomplete="name" required placeholder="Как к вам обращаться?"></div>
    <div class="order-field"><label for="orderPhone">Телефон</label><input id="orderPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+7 ___ ___-__-__"></div>
    <div class="order-field"><label for="orderArea">Площадь, м²</label><input id="orderArea" name="area" inputmode="decimal" placeholder="Например, 45"></div>
@@ -550,6 +550,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
    <button class="order-submit" type="submit">Отправить заявку</button>
    <p class="order-note">Нажимая «Отправить заявку», вы соглашаетесь на обработку указанных данных для связи по заявке.</p>
   </form>
+  <iframe name="formboostFrame" id="formboostFrame" title="Formboost" style="display:none"></iframe>
   <div class="order-success" id="orderSuccess">
    <h3>Заявка отправлена</h3>
    <p>Спасибо. Мы свяжемся с вами для уточнения деталей и времени замера.</p>
@@ -620,6 +621,7 @@ orderClose.addEventListener('click',closeOrderModal);
 orderDone.addEventListener('click',closeOrderModal);
 orderModal.addEventListener('click',e=>{if(e.target===orderModal)closeOrderModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&orderModal.classList.contains('open'))closeOrderModal()});
+orderForm.addEventListener('submit',()=>{const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';setTimeout(()=>{orderForm.classList.add('hidden');orderSuccess.classList.add('show');},500);});
 </script>
 
 </body>
