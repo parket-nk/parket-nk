@@ -547,12 +547,10 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 <div class="order-modal" id="orderModal" aria-hidden="true">
  <div class="order-dialog" role="dialog" aria-modal="true" aria-labelledby="orderTitle">
   <button class="order-close" id="orderClose" type="button" aria-label="Закрыть">×</button>
-  <div class="order-kicker">ПАРКЕТ-ХОЛЛ · ЗАМЕР</div>
-  <h2 id="orderTitle">Заказать замер</h2>
-  <p class="order-lead">Оставьте контакты — свяжемся с вами и договоримся о времени замера.</p>
+
   <form class="order-form" action="https://formboost.app/f/q3oluts6" method="POST" target="formboostFrame" id="orderForm">
    <div class="order-field"><label for="orderName">Ваше имя</label><input id="orderName" name="name" autocomplete="name" required placeholder="Как к вам обращаться?"></div>
-   <div class="order-field"><label for="orderPhone">Телефон</label><input id="orderPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+7 ___ ___-__-__"></div>
+   <div class="order-field"><label for="orderPhone">Телефон</label><input id="orderPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="(?:\+7|8)[\s()\-\d]{10,}" title="Введите корректный номер телефона" placeholder="+7 ___ ___-__-__"></div>
    <div class="order-field"><label for="orderArea">Площадь, м²</label><input id="orderArea" name="area" inputmode="decimal" placeholder="Например, 45"></div>
    <div class="order-field"><label for="orderMessage">Что нужно сделать?</label><textarea id="orderMessage" name="message" placeholder="Например: восстановить старый паркет"></textarea></div>
    <button class="order-submit" type="submit">Отправить заявку</button>
@@ -629,7 +627,7 @@ orderClose.addEventListener('click',closeOrderModal);
 orderDone.addEventListener('click',closeOrderModal);
 orderModal.addEventListener('click',e=>{if(e.target===orderModal)closeOrderModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&orderModal.classList.contains('open'))closeOrderModal()});
-orderForm.addEventListener('submit',e=>{e.preventDefault();const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';orderForm.classList.add('hidden');orderSuccess.classList.add('show');HTMLFormElement.prototype.submit.call(orderForm);});
+orderForm.addEventListener('submit',e=>{e.preventDefault();const phone=document.getElementById('orderPhone');const digits=phone.value.replace(/\D/g,'');const valid=(digits.length===11&&(digits.startsWith('7')||digits.startsWith('8')))||(digits.length===10&&digits.startsWith('9'));if(!valid){phone.setCustomValidity('Введите корректный номер телефона');phone.reportValidity();phone.setCustomValidity('');return;}const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';orderForm.classList.add('hidden');orderSuccess.classList.add('show');HTMLFormElement.prototype.submit.call(orderForm);});
 </script>
 
 </body>
