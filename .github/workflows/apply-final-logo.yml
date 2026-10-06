@@ -63,7 +63,7 @@ jobs:
           @media(min-width:641px){
             .hero-stat:nth-child(3){justify-content:center;padding-left:0}
             .hero-stat:nth-child(3) span{font-size:0;color:var(--gold2);display:inline-flex;align-items:center}
-            .hero-stat:nth-child(3) span:before{content:"";display:inline-block;width:7px;height:7px;background:var(--gold2);transform:rotate(45deg);margin:0 16px 1px 10px;vertical-align:middle}
+            .hero-stat:nth-child(3) span:before{content:"";display:inline-block;width:7px;height:7px;background:var(--gold2);transform:rotate(45deg);margin:0 20px 1px 10px;vertical-align:middle}
             .hero-stat:nth-child(3) span:after{content:"КЕМЕРОВО";font-family:Manrope,Arial,sans-serif;font-size:18px;font-weight:700;color:var(--gold2);letter-spacing:.04em;line-height:normal}
           }
           '''
