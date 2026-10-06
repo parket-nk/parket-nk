@@ -277,6 +277,13 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   .logo-instagram .ig-icon,.logo-instagram .ig-icon svg{width:25px;height:25px}
 }
 @media(max-width:640px){.mobile-bar{grid-template-columns:repeat(3,1fr)}.mobile-bar a{gap:7px;font-size:10px}.mobile-bar .m-icon{width:17px;height:17px;flex-basis:17px}.mobile-bar .m-icon svg{width:17px;height:17px}}
+
+/* FINAL BRAND OVERRIDE: visible header logo must read ПАРКЕТ-ХОЛЛ */
+.logo-wordmark{font-size:0!important;gap:11px!important}
+.logo-wordmark span{display:none!important}
+.logo-wordmark::before{content:"ПАРКЕТ";font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;line-height:.92;letter-spacing:.045em;color:#f4f1eb}
+.logo-wordmark::after{content:"ХОЛЛ";font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;line-height:.92;letter-spacing:.045em;color:var(--gold2)}
+@media(max-width:640px){.logo-wordmark{gap:8px!important}.logo-wordmark::before,.logo-wordmark::after{font-size:20px}}
 </style>
 </head>
 <body>
