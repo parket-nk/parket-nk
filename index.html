@@ -628,7 +628,7 @@ orderClose.addEventListener('click',closeOrderModal);
 orderDone.addEventListener('click',closeOrderModal);
 orderModal.addEventListener('click',e=>{if(e.target===orderModal)closeOrderModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&orderModal.classList.contains('open'))closeOrderModal()});
-orderForm.addEventListener('submit',()=>{const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';setTimeout(()=>{orderForm.classList.add('hidden');orderSuccess.classList.add('show');},700);});
+orderForm.addEventListener('submit',e=>{e.preventDefault();const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';orderForm.classList.add('hidden');orderSuccess.classList.add('show');HTMLFormElement.prototype.submit.call(orderForm);});
 </script>
 
 </body>
