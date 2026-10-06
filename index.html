@@ -48,7 +48,9 @@ button{font:inherit}
 .hero h1 em{font-family:"Playfair Display",serif;font-weight:500;color:var(--gold2);font-style:normal}
 .hero-sub{max-width:620px;color:#c2c3c2;font-size:16px;line-height:1.7;margin:0 0 36px}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:52px;padding:0 24px;border:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:.35s var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 20px;border:1px solid var(--line);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:.35s var(--ease)}
+.btn-icon{width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;flex:0 0 18px}
+.btn-icon svg{width:18px;height:18px;display:block}
 .btn-primary{background:var(--gold);border-color:var(--gold);color:#111}
 .btn-primary:hover{background:var(--gold2);transform:translateY(-3px)}
 .btn-ghost{background:rgba(255,255,255,.04);backdrop-filter:blur(8px)}
@@ -340,9 +342,10 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
     <h1>Деревянный пол.<br><em>Сделанный как надо.</em></h1>
     <p>Реставрация, шлифовка и укладка деревянных полов. 15 лет практики.</p>
     <div class="actions hero-slide-actions">
-     <a class="btn btn-primary" href="#contacts">Заказать замер <span>↗</span></a>
-     <a class="btn btn-ghost" href="https://wa.me/79511804499" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
-     <a class="btn btn-ghost" href="https://t.me/He_Maks" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+     <a class="btn btn-primary" href="#contacts"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 17l9.5-9.5 2.5 2.5L8.5 19H6v-2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m14 6 2.5 2.5M8 19l-2 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Заказать замер</span></a>
+     <a class="btn btn-ghost" href="https://wa.me/79511804499" target="_blank" rel="noopener noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11 11 0 0 0 3.4 17.1L2 22l5-1.3A11 11 0 1 0 20.5 3.5Zm-8.9 17A9 9 0 0 1 7 19.2l-.3-.2-2.9.8.8-2.8-.2-.3a9 9 0 1 1 7.2 3.8Zm4.9-6.7c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-.9 1.2-.3.2-.6.1a7.5 7.5 0 0 1-3.8-3.3c-.3-.5.3-.5.9-1.7.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.6 1.1 3 1.2 3.2a11.4 11.4 0 0 0 4.4 4c.6.3 1.1.5 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.1-1.5-.1-.1-.3-.2-.6-.3Z" fill="currentColor"/></svg></span><span>WhatsApp</span></a>
+     <a class="btn btn-ghost" href="https://t.me/He_Maks" target="_blank" rel="noopener noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 3.2 2.7 10.6c-.7.3-.7 1.2 0 1.5l4.9 1.8 1.9 5.9c.2.7 1.1.9 1.5.3l2.7-3.7 4.9 3.6c.6.4 1.4.1 1.6-.6l3.2-15.2c.2-.8-.6-1.4-1.5-1.1ZM9.2 13.4l9.5-7.3-7.4 8.3-.3 2.4-1.1-3.4-4-1.4 3.3-1.3Z" fill="currentColor"/></svg></span><span>Telegram</span></a>
+     <a class="btn btn-ghost" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span><span>Instagram</span></a>
     </div>
    </div>
   </article>
@@ -352,7 +355,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
     <div class="hero-slide-num">02 / 05 · ШЛИФОВКА</div>
     <h1>Красивый пол<br><em>начинается с основы.</em></h1>
     <p>Правильная подготовка поверхности — половина результата. Остальное видно в финише.</p>
-    <div class="actions hero-slide-actions"><a class="btn btn-primary" href="#contacts">Заказать замер <span>↗</span></a><a class="btn btn-ghost" href="https://wa.me/79511804499" target="_blank" rel="noopener noreferrer">WhatsApp ↗</a><a class="btn btn-ghost" href="https://t.me/He_Maks" target="_blank" rel="noopener noreferrer">Telegram ↗</a></div>
+    <div class="actions hero-slide-actions"><a class="btn btn-primary" href="#contacts"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 17l9.5-9.5 2.5 2.5L8.5 19H6v-2Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m14 6 2.5 2.5M8 19l-2 1" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><span>Заказать замер</span></a><a class="btn btn-ghost" href="https://wa.me/79511804499" target="_blank" rel="noopener noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.5 3.5A11 11 0 0 0 3.4 17.1L2 22l5-1.3A11 11 0 1 0 20.5 3.5Zm-8.9 17A9 9 0 0 1 7 19.2l-.3-.2-2.9.8.8-2.8-.2-.3a9 9 0 1 1 7.2 3.8Zm4.9-6.7c-.3-.2-1.8-.9-2.1-1s-.5-.2-.7.2-.8 1-.9 1.2-.3.2-.6.1a7.5 7.5 0 0 1-3.8-3.3c-.3-.5.3-.5.9-1.7.1-.2 0-.4 0-.6s-.7-1.6-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4s-1.1 1.1-1.1 2.6 1.1 3 1.2 3.2a11.4 11.4 0 0 0 4.4 4c.6.3 1.1.5 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.1-1.5-.1-.1-.3-.2-.6-.3Z" fill="currentColor"/></svg></span><span>WhatsApp</span></a><a class="btn btn-ghost" href="https://t.me/He_Maks" target="_blank" rel="noopener noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21.8 3.2 2.7 10.6c-.7.3-.7 1.2 0 1.5l4.9 1.8 1.9 5.9c.2.7 1.1.9 1.5.3l2.7-3.7 4.9 3.6c.6.4 1.4.1 1.6-.6l3.2-15.2c.2-.8-.6-1.4-1.5-1.1ZM9.2 13.4l9.5-7.3-7.4 8.3-.3 2.4-1.1-3.4-4-1.4 3.3-1.3Z" fill="currentColor"/></svg></span><span>Telegram</span></a><a class="btn btn-ghost" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer"><span class="btn-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span><span>Instagram</span></a></div>
    </div>
   </article>
   <article class="hero-slide">
