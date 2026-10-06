@@ -159,6 +159,9 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 .order-field textarea{min-height:92px;resize:vertical}
 .order-field input::placeholder,.order-field textarea::placeholder{color:#555}
 .order-field input:focus,.order-field textarea:focus{border-color:rgba(224,194,138,.7);box-shadow:0 0 0 3px rgba(224,194,138,.08)}
+  .order-field input.phone-invalid{border-color:#d85b5b;box-shadow:0 0 0 3px rgba(216,91,91,.12)}
+  .phone-error{display:none;color:#d85b5b;font-size:10px;line-height:1.4}
+  .phone-error.show{display:block}
 .order-consent{display:flex;align-items:flex-start;gap:10px;margin-top:2px;color:#777;font-size:11px;line-height:1.5;cursor:pointer}
 .order-consent input{width:16px;height:16px;margin:1px 0 0;accent-color:var(--gold);flex:0 0 16px}
 .order-consent a{color:#aaa;text-decoration:underline;text-underline-offset:3px}
@@ -551,7 +554,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 
   <form class="order-form" action="https://formboost.app/f/q3oluts6" method="POST" target="formboostFrame" id="orderForm">
    <div class="order-field"><label for="orderName">Ваше имя</label><input id="orderName" name="name" autocomplete="name" required placeholder="Как к вам обращаться?"></div>
-   <div class="order-field"><label for="orderPhone">Телефон</label><input id="orderPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="(?:\+7|8)[\s()\-\d]{10,}" title="Введите корректный номер телефона" placeholder="+7 ___ ___-__-__"></div>
+   <div class="order-field"><label for="orderPhone">Телефон</label><input id="orderPhone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required pattern="(?:\+7|8)[\s()\-\d]{10,}" title="Введите корректный номер телефона" placeholder="+7 ___ ___-__-__"><span class="phone-error" id="phoneError">Введите только цифры и символы + ( ) -</span></div>
    <div class="order-field"><label for="orderArea">Площадь, м²</label><input id="orderArea" name="area" inputmode="decimal" placeholder="Например, 45"></div>
    <div class="order-field"><label for="orderMessage">Что нужно сделать?</label><textarea id="orderMessage" name="message" placeholder="Например: восстановить старый паркет"></textarea></div>
    <button class="order-submit" type="submit">Отправить заявку</button>
@@ -628,7 +631,9 @@ orderClose.addEventListener('click',closeOrderModal);
 orderDone.addEventListener('click',closeOrderModal);
 orderModal.addEventListener('click',e=>{if(e.target===orderModal)closeOrderModal()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&orderModal.classList.contains('open'))closeOrderModal()});
-orderForm.addEventListener('submit',e=>{e.preventDefault();const phone=document.getElementById('orderPhone');const digits=phone.value.replace(/\D/g,'');const valid=(digits.length===11&&(digits.startsWith('7')||digits.startsWith('8')))||(digits.length===10&&digits.startsWith('9'));if(!valid){phone.setCustomValidity('Введите корректный номер телефона');phone.reportValidity();phone.setCustomValidity('');return;}const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';orderForm.classList.add('hidden');orderSuccess.classList.add('show');HTMLFormElement.prototype.submit.call(orderForm);});
+const phoneError=document.getElementById('phoneError');
+phone.addEventListener('input',()=>{const hasLetters=/[^0-9+()\s-]/.test(phone.value);phone.classList.toggle('phone-invalid',hasLetters);phoneError.classList.toggle('show',hasLetters);});
+orderForm.addEventListener('submit',e=>{e.preventDefault();const phone=document.getElementById('orderPhone');const digits=phone.value.replace(/\D/g,'');const hasLetters=/[^0-9+()\s-]/.test(phone.value);if(hasLetters){phone.classList.add('phone-invalid');phoneError.classList.add('show');phone.focus();return;}const valid=(digits.length===11&&(digits.startsWith('7')||digits.startsWith('8')))||(digits.length===10&&digits.startsWith('9'));if(!valid){phone.setCustomValidity('Введите корректный номер телефона');phone.reportValidity();phone.setCustomValidity('');return;}const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';orderForm.classList.add('hidden');orderSuccess.classList.add('show');HTMLFormElement.prototype.submit.call(orderForm);});
 </script>
 
 </body>
