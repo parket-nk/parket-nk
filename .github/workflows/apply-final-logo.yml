@@ -62,7 +62,7 @@ jobs:
           @media(max-width:640px){.mobile-bar{grid-template-columns:repeat(3,1fr)}.mobile-bar a{gap:7px;font-size:10px}.mobile-bar .m-icon{width:17px;height:17px;flex-basis:17px}.mobile-bar .m-icon svg{width:17px;height:17px}}
           @media(min-width:641px){
             .hero-stat:nth-child(3) span{font-size:0;color:var(--gold2)}
-            .hero-stat:nth-child(3) span:after{content:"КЕМЕРОВО";font-size:10px;color:var(--gold2);letter-spacing:.1em}
+            .hero-stat:nth-child(3) span:after{content:"КЕМЕРОВО";font-family:Manrope,Arial,sans-serif;font-size:18px;font-weight:700;color:var(--gold2);letter-spacing:.04em;line-height:normal}
           }
           '''
           s = re.sub(re.escape(marker) + r'.*?(?=</style>)', '', s, count=1, flags=re.S)
@@ -85,7 +85,7 @@ jobs:
           grep -q 'header-contact{display:none}' index.html
           grep -q 'logo-instagram{display:inline-flex' index.html
           grep -q 'width:25px;height:25px' index.html
-          grep -q 'hero-stat:nth-child(3) span:after{content:"КЕМЕРОВО"' index.html
+          grep -q 'hero-stat:nth-child(3) span:after{content:"КЕМЕРОВО";font-family:Manrope,Arial,sans-serif;font-size:18px;font-weight:700' index.html
           grep -q '<b>НОВОКУЗНЕЦК</b><span>КУЗБАСС</span>' index.html
           grep -q "orderForm.addEventListener('submit'" index.html
           grep -q "Content-Type':'application/json'" index.html
@@ -98,5 +98,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Apply desktop location label [skip ci]"
+          git commit -m "Match Kemerovo font to Novokuznetsk [skip ci]"
           git push
