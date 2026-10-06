@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs>
+    <mask id="logoMask" maskUnits="userSpaceOnUse" x="0" y="0" width="96" height="96" mask-type="luminance">
+      <image href="sibir-parket-reference-logo.svg" x="0" y="0" width="96" height="96"/>
+    </mask>
+  </defs>
+  <rect width="96" height="96" fill="#e0c28a" mask="url(#logoMask)"/>
+</svg>
