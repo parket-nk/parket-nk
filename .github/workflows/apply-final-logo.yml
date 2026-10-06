@@ -31,11 +31,11 @@ jobs:
           marker = '/* FINAL SIBIR PARKET LOGO */'
           css = marker + '''
           .logo{display:flex;align-items:center;gap:14px;line-height:1;white-space:nowrap}
-          .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;background-image:url("assets/sibir-parket-final.svg");background-repeat:no-repeat;background-position:center;background-size:contain;mask-image:none;-webkit-mask-image:none}
+          .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;background-image:url("assets/sibir-parket-final.svg");background-repeat:no-repeat;background-position:center;background-size:134%;mask-image:none;-webkit-mask-image:none}
           .logo-wordmark{display:flex;align-items:baseline;gap:11px;white-space:nowrap;font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;line-height:.92;letter-spacing:.045em;color:#f4f1eb}
           .logo-wordmark span{font:inherit;line-height:inherit;color:#f4f1eb}
           .logo-wordmark span:last-child{color:var(--gold2)}
-          @media(max-width:640px){.logo-mark-image{width:36px;height:36px;flex-basis:36px}.logo{gap:10px}.logo-wordmark{font-size:20px;gap:8px;letter-spacing:.035em}}
+          @media(max-width:640px){.logo-mark-image{width:36px;height:36px;flex-basis:36px;background-size:134%}.logo{gap:10px}.logo-wordmark{font-size:20px;gap:8px;letter-spacing:.035em}}
           '''
           s = re.sub(re.escape(marker) + r'.*?(?=</style>)', '', s, count=1, flags=re.S)
           s = s.replace('</style>', css + '</style>', 1)
@@ -52,6 +52,7 @@ jobs:
           grep -q 'СИБИРЬ' index.html
           grep -q 'ПАРКЕТ' index.html
           grep -q 'mask-image:none' index.html
+          grep -q 'background-size:134%' index.html
 
       - name: Commit changes
         run: |
@@ -59,5 +60,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Finalize exact transparent parquet logo [skip ci]"
+          git commit -m "Scale website parquet logo to visible edges [skip ci]"
           git push
