@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Apply final logo and Instagram layout
+      - name: Apply final logo and header layout
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -37,14 +37,8 @@ jobs:
               raise SystemExit('header nav not found')
           s = s[:insert_at] + logo + '\n' + s[insert_at:]
 
-          # Desktop: Instagram is a text link in the existing right-side contact area.
-          # Mobile: keep only the standalone icon at the far right of the brand row.
+          # Remove the desktop Instagram text link near the phone.
           s = re.sub(r'\s*<a class="header-instagram".*?</a>', '', s, count=1, flags=re.S)
-          desktop_ig = '<a class="header-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer">Instagram</a>'
-          m = re.search(r'(<div class="header-contact"[^>]*>)', s)
-          if not m:
-              raise SystemExit('header contact not found')
-          s = s[:m.end()] + desktop_ig + s[m.end():]
 
           s = re.sub(r'\s*<a class="m-instagram".*?</a>', '', s, count=1, flags=re.S)
 
@@ -85,8 +79,8 @@ jobs:
           grep -q 'assets/sibir-parket-final.svg' index.html
           grep -q 'Cormorant Garamond' index.html
           grep -q 'FINAL PARKET-HALL LOGO' index.html
-          grep -q 'header-instagram' index.html
-          grep -q 'Instagram</a>' index.html
+          ! grep -q 'class="header-instagram"' index.html
+          ! grep -q '>Instagram</a>' index.html
           grep -q 'parket.nk' index.html
           ! grep -q 'class="m-instagram"' index.html
           grep -q 'grid-template-columns:repeat(3,1fr)' index.html
@@ -100,5 +94,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
           git diff --cached --quiet && exit 0
-          git commit -m "Put Instagram beside desktop contact and enlarge mobile icon [skip ci]"
+          git commit -m "Remove desktop Instagram link near phone [skip ci]"
           git push
