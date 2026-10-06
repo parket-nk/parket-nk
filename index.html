@@ -35,8 +35,8 @@ button{font:inherit}
 .nav a:hover{color:#fff}.nav a:hover:after{right:0}
 .header-contact{display:flex;align-items:center;gap:14px}
 .header-phone{font-size:13px;font-weight:700}
-.header-cta{border:1px solid var(--gold);padding:10px 16px;font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);transition:.3s}
-.header-cta:hover{background:var(--gold);color:#111}
+.header-cta{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border:1px solid var(--line);background:rgba(255,255,255,.04);color:inherit;backdrop-filter:blur(8px);transition:.35s var(--ease)}
+.header-cta:hover{border-color:var(--gold);color:var(--gold2);transform:translateY(-2px)}
 
 .hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;overflow:hidden}
 .hero-media{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,9,.88) 0%,rgba(8,9,9,.58) 48%,rgba(8,9,9,.45) 100%),linear-gradient(0deg,rgba(8,9,9,.88) 0%,transparent 45%),url('https://images.portal.muenchen.de/000/000/309/937/versions/parkett-verlegen-muenchen-sbn_660x440_6a8317e6e26aa.png') center/cover;transform:scale(1.03);animation:heroZoom 12s ease-out forwards}
@@ -374,9 +374,9 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   <nav class="nav">
    <a href="#services">Услуги</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#contacts">Контакты</a>
   </nav>
-  <div class="header-contact"><a class="header-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer">Instagram</a>
+  <div class="header-contact">
    <a class="header-phone" href="tel:+79511804499">+7 951 180-44-99</a>
-   <a class="header-cta" href="#contacts">Связаться</a>
+   <a class="header-cta btn-social" href="#contacts">Связаться</a>
   </div>
  </div>
 </header>
