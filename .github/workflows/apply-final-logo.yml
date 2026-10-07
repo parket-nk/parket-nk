@@ -29,7 +29,7 @@ jobs:
           if n != 1:
               raise SystemExit('logo block not found')
 
-          logo = '''<div class="logo"><a class="logo-brand" href="#" aria-label="ПАРКЕТ-ХОЛЛ"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span>ПАРКЕТ</span><span>ХОЛЛ</span></span></a><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></div>'''
+          logo = '''<div class="logo"><a class="logo-brand" href="#" aria-label="ПАРКЕТ-ХОЛЛ"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span class="logo-word"><span class="logo-letter">П</span><span class="logo-letter">А</span><span class="logo-letter">Р</span><span class="logo-letter">К</span><span class="logo-letter">Е</span><span class="logo-letter">Т</span></span><span class="logo-word"><span class="logo-letter">Х</span><span class="logo-letter">О</span><span class="logo-letter">Л</span><span class="logo-letter">Л</span></span></span></a><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></div>'''
 
           header_start = s.find('<header class="header"')
           insert_at = s.find('  <nav class="nav">', header_start)
@@ -45,8 +45,11 @@ jobs:
           .logo-brand{display:flex;align-items:center;gap:14px;color:inherit;text-decoration:none}
           .logo-mark-image{width:46px;height:46px;display:block;flex:0 0 46px;background-color:transparent;transition:filter .28s var(--ease);background-image:url("assets/sibir-parket-final.svg");background-repeat:no-repeat;background-position:center;background-size:134%;mask-image:none;-webkit-mask-image:none}
           .logo-wordmark{display:flex;align-items:baseline;gap:11px;white-space:nowrap;font-family:"Cormorant Garamond",Georgia,serif;font-size:26px;font-weight:600;line-height:.92;letter-spacing:.045em;color:#f4f1eb}
-          .logo-wordmark span{font:inherit;line-height:inherit;color:#f4f1eb;transition:color .28s var(--ease)}.logo-wordmark span:last-child{color:var(--gold2)}
-          @media (hover:hover) and (pointer:fine){.logo-mark-image:hover{filter:brightness(0) invert(1)}.logo-wordmark span:first-child:hover{color:var(--gold2)}.logo-wordmark span:last-child:hover{color:#fff}}
+          .logo-word{display:inline-flex;font:inherit;line-height:inherit;color:inherit}
+          .logo-letter{font:inherit;line-height:inherit;transition:color .28s var(--ease)}
+          .logo-word:first-child .logo-letter{color:#f4f1eb}
+          .logo-word:last-child .logo-letter{color:var(--gold2)}
+          @media (hover:hover) and (pointer:fine){.logo-mark-image:hover{filter:brightness(0) invert(1)}.logo-word:first-child .logo-letter:hover{color:var(--gold2)}.logo-word:last-child .logo-letter:hover{color:#fff}}
           .logo-instagram{display:none;align-items:center;justify-content:center;color:var(--gold2);transition:.3s var(--ease);flex:0 0 auto}
           .logo-instagram:hover{color:#fff;transform:translateY(-1px)}
           .logo-instagram .ig-icon{width:21px;height:21px;display:inline-flex;align-items:center;justify-content:center}
@@ -79,6 +82,10 @@ jobs:
           test -f assets/sibir-parket-final.svg
           grep -q 'assets/sibir-parket-final.svg' index.html
           grep -q 'Cormorant Garamond' index.html
+          grep -q 'class="logo-letter">П</span>' index.html
+          grep -q 'class="logo-letter">Х</span>' index.html
+          grep -q '.logo-word:first-child .logo-letter:hover{color:var(--gold2)}' index.html
+          grep -q '.logo-word:last-child .logo-letter:hover{color:#fff}' index.html
           grep -q 'FINAL PARKET-HALL LOGO' index.html
           ! grep -q 'class="header-instagram"' index.html
           ! grep -q '>Instagram</a>' index.html
