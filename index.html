@@ -347,7 +347,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   .hero-stat:nth-child(3) span:after{content:"КЕМЕРОВО";font-family:Manrope,Arial,sans-serif;font-size:18px;font-weight:700;color:var(--gold2);letter-spacing:.04em;line-height:normal}
 }
 </style>
-</head>
+<link rel="stylesheet" href="portfolio-gallery.css">\n</head>
 <body>
 <div class="scrollbar" id="scrollbar"></div>
 <div class="topline"></div>
@@ -513,12 +513,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 
 <section class="section works-section" id="works">
  <div class="container">
-  <div class="section-head reveal"><div><div class="kicker">03 · Работы</div><h2>До и после<br>начинается с деталей.</h2></div><p class="section-intro">Показываем сам процесс: шлифовка, укладка и финиш. Никаких стоковых обещаний вместо работы.</p></div>
-  <div class="showcase reveal">
-   <div class="photo tall"><img loading="lazy" src="https://images.squarespace-cdn.com/content/v1/63a48af377400155742b860d/66b3a38c-4d28-4bf2-8ffe-9ff33211600d/Bob-sanding-floor.jpg" alt="Шлифовка паркета машиной Lägler Trio"><div class="photo-caption"><b>Шлифовка паркета</b><span>Точная обработка · подключённое пылеудаление</span></div></div>
-   <div class="photo small"><img loading="lazy" src="https://images.portal.muenchen.de/000/000/309/937/versions/parkett-verlegen-muenchen-sbn_660x440_6a8317e6e26aa.png" alt="Укладка премиального паркета ёлкой"><div class="photo-caption"><b>Укладка паркета</b><span>Премиальная ёлка · точная геометрия</span></div></div>
-   <div class="photo small"><img loading="lazy" src="https://storage.googleapis.com/joszaki-assets/profession_pics/parketta-lakkozas.jpg" alt="Нанесение лака на паркет"><div class="photo-caption"><b>Лак и финиш</b><span>Ровный слой · глубокий оттенок · защита</span></div></div>
-  </div>
+  <div class="section-head reveal"><div><div class="kicker">03 · Работы</div><h2>Реальные объекты.<br>Реальная работа.</h2></div><p class="section-intro">Фотографии наших проектов: укладка, реставрация и тонировка деревянных полов.</p></div>
  </div>
 </section>
 
@@ -669,5 +664,5 @@ phone.addEventListener('input',()=>{const hasLetters=/[^0-9+()\s-]/.test(phone.v
 orderForm.addEventListener('submit',async e=>{e.preventDefault();const phone=document.getElementById('orderPhone');const digits=phone.value.replace(/\D/g,'');const hasLetters=/[^0-9+()\s-]/.test(phone.value);if(hasLetters){phone.classList.add('phone-invalid');phoneError.classList.add('show');phone.focus();return;}const valid=(digits.length===11&&(digits.startsWith('7')||digits.startsWith('8')))||(digits.length===10&&digits.startsWith('9'));if(!valid){phone.setCustomValidity('Введите корректный номер телефона');phone.reportValidity();phone.setCustomValidity('');return;}const btn=orderForm.querySelector('.order-submit');btn.disabled=true;btn.textContent='ОТПРАВЛЯЕМ...';try{const data=Object.fromEntries(new FormData(orderForm));const response=await fetch(orderForm.action,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data),keepalive:true});if(!response.ok)throw new Error('HTTP '+response.status);orderForm.classList.add('hidden');orderSuccess.classList.add('show');}catch(err){btn.disabled=false;btn.textContent='ОТПРАВИТЬ ЗАЯВКУ';alert('Не удалось отправить заявку. Попробуйте ещё раз.');}});
 </script>
 
-</body>
+<script src="portfolio-gallery.js" defer></script>\n</body>
 </html>
