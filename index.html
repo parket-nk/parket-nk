@@ -425,6 +425,64 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   .btn-faq { width: 100%; min-height: 46px; }
 }
 </style>
+<style id="steps-styles">
+/* STEPS / WORKFLOW SECTION */
+.steps-section { background: var(--bg2); border-top: 1px solid var(--line); padding: 54px 0; }
+.steps-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 16px; margin: 36px 0 16px;
+}
+.steps-grid-bottom {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+}
+.step-card {
+  background: var(--panel); border: 1px solid var(--line);
+  padding: 30px 24px; position: relative;
+  transition: transform .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+  display: flex; flex-direction: column;
+}
+.step-card:hover {
+  transform: translateY(-4px); border-color: rgba(197, 162, 106, .45); background: var(--panel2);
+}
+.step-header {
+  display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px;
+}
+.step-number {
+  font-size: 32px; font-weight: 800; letter-spacing: -.04em; color: var(--gold2); line-height: 1;
+}
+.step-tag {
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted);
+  border: 1px solid rgba(255,255,255,.08); padding: 4px 10px; background: rgba(255,255,255,.02);
+}
+.step-card h3 {
+  font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 12px;
+  color: var(--text); letter-spacing: -.02em;
+}
+.step-card p {
+  color: #c4c5c5; font-size: 13.5px; line-height: 1.65; margin: 0;
+}
+.step-card strong { color: var(--gold2); font-weight: 600; }
+
+.steps-cta-bar {
+  margin-top: 36px; padding: 28px 32px;
+  background: linear-gradient(135deg, #17191a 0%, #101213 100%);
+  border: 1px solid rgba(197, 162, 106, .3);
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.steps-cta-bar strong { font-size: 18px; display: block; margin-bottom: 4px; color: var(--text); }
+.steps-cta-bar p { color: var(--muted); font-size: 13.5px; margin: 0; max-width: 520px; }
+.steps-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+
+@media(max-width: 900px) {
+  .steps-section { padding: 40px 0; }
+  .steps-grid { grid-template-columns: 1fr; margin-top: 26px; }
+  .steps-grid-bottom { grid-template-columns: 1fr; }
+  .step-card { padding: 24px 20px; }
+  .steps-cta-bar { padding: 22px 20px; flex-direction: column; align-items: stretch; gap: 18px; }
+  .steps-actions { flex-direction: column; }
+  .steps-actions .btn { width: 100%; min-height: 48px; }
+}
+</style>
 </head>
 <body>
 <div class="scrollbar" id="scrollbar"></div>
@@ -515,10 +573,9 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 
 
 
-
 <div class="logo"><a class="logo-brand" href="#" aria-label="ПАРКЕТ-ХОЛЛ"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span class="logo-word"><span class="logo-letter">П</span><span class="logo-letter">А</span><span class="logo-letter">Р</span><span class="logo-letter">К</span><span class="logo-letter">Е</span><span class="logo-letter">Т</span></span><span class="logo-word"><span class="logo-letter">Х</span><span class="logo-letter">О</span><span class="logo-letter">Л</span><span class="logo-letter">Л</span></span></span></a><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></div>
   <nav class="nav">
-   <a href="#services">Услуги</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a>
+   <a href="#services">Услуги</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#steps">Этапы</a><a href="#faq">Вопросы</a>
   </nav>
   <div class="header-contact">
    <a class="header-phone" href="tel:+79511804499">+7 951 180-44-99</a>
@@ -664,11 +721,83 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 </section>
 
 
+<section class="section steps-section" id="steps">
+ <div class="container">
+  <div class="section-head reveal">
+   <div>
+    <div class="kicker">06 · Порядок работы</div>
+    <h2>От задачи до готового пола.<br><em>Укладка. Реставрация. Финиш.</em></h2>
+   </div>
+   <p class="section-intro">Работаем по чёткой технологии — будь то укладка модульного паркета с нуля или восстановление исторического пола. Вы всегда знаете, что происходит на объекте.</p>
+  </div>
+
+  <div class="steps-grid reveal">
+   <div class="step-card">
+    <div class="step-header">
+     <span class="step-number">01</span>
+     <span class="step-tag">15 минут</span>
+    </div>
+    <h3>Консультация и оценка</h3>
+    <p>Отправляете дизайн-проект, параметры помещения или фото пола в <strong>WhatsApp / Telegram</strong>. Подскажем по технологии укладки (ёлка, палуба, модули) либо оценим возможность реставрации.</p>
+   </div>
+
+   <div class="step-card">
+    <div class="step-header">
+     <span class="step-number">02</span>
+     <span class="step-tag">Бесплатно</span>
+    </div>
+    <h3>Выезд и замер основания</h3>
+    <p>Мастер приезжает с лазерным уровнем и влагомером: проверяем прочность стяжки под укладку или состояние плашек. Привозим <strong>образцы дерева и реальные выкрасы</strong> под лаком и маслом.</p>
+   </div>
+
+   <div class="step-card">
+    <div class="step-header">
+     <span class="step-number">03</span>
+     <span class="step-tag">Фиксация</span>
+    </div>
+    <h3>Точный расчёт и смета</h3>
+    <p>Рассчитываем материалы с точным запасом на подрезку. <strong>Смета и сроки фиксируются</strong> до начала работ — никаких неожиданных доплат за «сложность» или перерасход клея в процессе.</p>
+   </div>
+  </div>
+
+  <div class="steps-grid-bottom reveal">
+   <div class="step-card">
+    <div class="step-header">
+     <span class="step-number">04</span>
+     <span class="step-tag">Мастерство</span>
+    </div>
+    <h3>Укладка и немецкая обработка</h3>
+    <p><strong>При укладке:</strong> идеальная геометрия рисунка, температурные зазоры и надёжная фиксация. <strong>При шлифовке:</strong> немецкие машины <strong>Lägler (Hummel + Trio)</strong> с мощным пылеудалением без пыли на стенах.</p>
+   </div>
+
+   <div class="step-card">
+    <div class="step-header">
+     <span class="step-number">05</span>
+     <span class="step-tag">Результат</span>
+    </div>
+    <h3>Финиш, сдача и гарантия</h3>
+    <p>Послойная защита экологичным лаком или маслом с твёрдым воском, аккуратный монтаж плинтуса. Сдаём безупречный пол и даём чёткие рекомендации по уходу, чтобы дерево служило <strong>десятилетиями</strong>.</p>
+   </div>
+  </div>
+
+  <div class="steps-cta-bar reveal">
+   <div>
+    <strong>Планируете укладку или реставрацию пола?</strong>
+    <p>Напишите нам параметры помещения или отправьте фото — сориентируем в течение 15 минут.</p>
+   </div>
+   <div class="steps-actions">
+    <a class="btn btn-primary" href="https://wa.me/79511804499" target="_blank" rel="noopener noreferrer">Обсудить проект в WhatsApp ↗</a>
+    <a class="btn btn-ghost btn-social" href="https://t.me/He_Maks" target="_blank" rel="noopener noreferrer">Telegram ↗</a>
+   </div>
+  </div>
+ </div>
+</section>
+
 <section class="section faq-section" id="faq">
  <div class="container">
   <div class="section-head reveal">
    <div>
-    <div class="kicker">06 · Вопросы и ответы</div>
+    <div class="kicker">07 · Вопросы и ответы</div>
     <h2>Развеиваем сомнения.<br><em>Честно о работе с деревом.</em></h2>
    </div>
    <p class="section-intro">Собрали главные вопросы, которые нам чаще всего задают перед началом циклевки, реставрации или укладки пола в Новокузнецке и области.</p>
@@ -749,7 +878,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 </section>
 
 <section class="section cta" id="contacts">
- <div class="contact-topline"><span>07 · Контакты</span></div>
+ <div class="contact-topline"><span>08 · Контакты</span></div>
  <div class="container cta-inner reveal">
   <div><div class="kicker">Начнём с оценки</div><h2>Покажите пол.<br>Скажу, что с ним делать.</h2><p>Отправьте фото в WhatsApp или Telegram — предварительно сориентирую по решению и дальнейшим шагам.</p></div>
   <div class="actions">
@@ -764,7 +893,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  <div class="container">
   <div class="footer-grid">
    <div><div class="footer-brand">ПАРКЕТ-ХОЛЛ</div><div class="footer-note">РЕСТАВРАЦИЯ · ШЛИФОВКА · УКЛАДКА ДЕРЕВЯННЫХ ПОЛОВ<br>Новокузнецк · Кузбасс</div></div>
-   <div class="footer-links"><a href="#services">Услуги</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a></div>
+   <div class="footer-links"><a href="#services">Услуги</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#steps">Этапы</a><a href="#faq">Вопросы</a></div>
    <div class="footer-contact">
 <a href="tel:+79511804499">+7 951 180-44-99</a><span><a href="mailto:parket-nk@mail.ru">parket-nk@mail.ru</a></span></div>
   </div>
