@@ -508,6 +508,53 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   .steps-actions .btn { width: 100%; min-height: 48px; }
 }
 </style>
+<style id="logo-3d-styles">
+.logo-mark-image {
+  background-image: none !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  overflow: visible !important;
+  filter: none !important;
+}
+@media (hover: hover) and (pointer: fine) {
+  .logo-mark-image:hover {
+    filter: none !important;
+  }
+}
+.logo-mark-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.45));
+  transition: filter 0.35s ease;
+}
+.logo-mark-svg .sector {
+  transition: transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+.logo-brand:hover .logo-mark-svg,
+.logo-mark-image:hover .logo-mark-svg {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 12px rgba(224, 194, 138, 0.35));
+}
+.logo-brand:hover .sector-top,
+.logo-mark-image:hover .sector-top {
+  transform: translateY(-4px);
+}
+.logo-brand:hover .sector-right,
+.logo-mark-image:hover .sector-right {
+  transform: translateX(4px);
+}
+.logo-brand:hover .sector-bottom,
+.logo-mark-image:hover .sector-bottom {
+  transform: translateY(4px);
+}
+.logo-brand:hover .sector-left,
+.logo-mark-image:hover .sector-left {
+  transform: translateX(-4px);
+}
+</style>
 </head>
 <body>
 <div class="scrollbar" id="scrollbar"></div>
@@ -598,8 +645,45 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 
 
 
-
-<div class="logo"><a class="logo-brand" href="#" aria-label="ПАРКЕТ-ХОЛЛ"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span class="logo-word"><span class="logo-letter">П</span><span class="logo-letter">А</span><span class="logo-letter">Р</span><span class="logo-letter">К</span><span class="logo-letter">Е</span><span class="logo-letter">Т</span></span><span class="logo-word"><span class="logo-letter">Х</span><span class="logo-letter">О</span><span class="logo-letter">Л</span><span class="logo-letter">Л</span></span></span></a><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></div>
+<div class="logo"><a class="logo-brand" href="#" aria-label="ПАРКЕТ-ХОЛЛ"><span class="logo-mark-image" aria-hidden="true">
+<svg class="logo-mark-svg" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="brandGold3D" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#faeccb"/>
+      <stop offset="25%" stop-color="#dfbb7f"/>
+      <stop offset="50%" stop-color="#b6894c"/>
+      <stop offset="75%" stop-color="#e8caa0"/>
+      <stop offset="100%" stop-color="#825c27"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#brandGold3D)" stroke="rgba(255, 235, 195, 0.45)" stroke-width="0.35" stroke-linejoin="round">
+    <g class="sector sector-top">
+      <path class="plank plank-top-1" d="M 15.20,11.00 L 25.30,11.00 L 53.05,38.75 L 48.00,43.80 Z" />
+      <path class="plank plank-top-2" d="M 33.70,11.00 L 43.80,11.00 L 62.30,29.50 L 57.25,34.55 Z" />
+      <path class="plank plank-top-3" d="M 52.20,11.00 L 62.30,11.00 L 71.55,20.25 L 66.50,25.30 Z" />
+      <path class="plank plank-top-4" d="M 70.70,11.00 L 80.80,11.00 L 75.75,16.05 Z" />
+    </g>
+    <g class="sector sector-right">
+      <path class="plank plank-right-1" d="M 85.00,15.20 L 85.00,25.30 L 57.25,53.05 L 52.20,48.00 Z" />
+      <path class="plank plank-right-2" d="M 85.00,33.70 L 85.00,43.80 L 66.50,62.30 L 61.45,57.25 Z" />
+      <path class="plank plank-right-3" d="M 85.00,52.20 L 85.00,62.30 L 75.75,71.55 L 70.70,66.50 Z" />
+      <path class="plank plank-right-4" d="M 85.00,70.70 L 85.00,80.80 L 79.95,75.75 Z" />
+    </g>
+    <g class="sector sector-bottom">
+      <path class="plank plank-bottom-1" d="M 80.80,85.00 L 70.70,85.00 L 42.95,57.25 L 48.00,52.20 Z" />
+      <path class="plank plank-bottom-2" d="M 62.30,85.00 L 52.20,85.00 L 33.70,66.50 L 38.75,61.45 Z" />
+      <path class="plank plank-bottom-3" d="M 43.80,85.00 L 33.70,85.00 L 24.45,75.75 L 29.50,70.70 Z" />
+      <path class="plank plank-bottom-4" d="M 25.30,85.00 L 15.20,85.00 L 20.25,79.95 Z" />
+    </g>
+    <g class="sector sector-left">
+      <path class="plank plank-left-1" d="M 11.00,80.80 L 11.00,70.70 L 38.75,42.95 L 43.80,48.00 Z" />
+      <path class="plank plank-left-2" d="M 11.00,62.30 L 11.00,52.20 L 29.50,33.70 L 34.55,38.75 Z" />
+      <path class="plank plank-left-3" d="M 11.00,43.80 L 11.00,33.70 L 20.25,24.45 L 25.30,29.50 Z" />
+      <path class="plank plank-left-4" d="M 11.00,25.30 L 11.00,15.20 L 16.05,20.25 Z" />
+    </g>
+  </g>
+</svg>
+</span><span class="logo-wordmark" aria-hidden="true"><span class="logo-word"><span class="logo-letter">П</span><span class="logo-letter">А</span><span class="logo-letter">Р</span><span class="logo-letter">К</span><span class="logo-letter">Е</span><span class="logo-letter">Т</span></span><span class="logo-word"><span class="logo-letter">Х</span><span class="logo-letter">О</span><span class="logo-letter">Л</span><span class="logo-letter">Л</span></span></span></a><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></div>
   <nav class="nav">
    <a href="#services">Услуги</a><a href="#steps">Этапы</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#faq">Вопросы</a>
   </nav>
