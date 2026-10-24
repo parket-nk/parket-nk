@@ -356,6 +356,75 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 }
 </style>
   <link rel="stylesheet" href="portfolio-gallery.css?v=20261012-2">
+<style id="faq-styles">
+/* FAQ SECTION STYLES */
+.faq-section { background: var(--bg); border-top: 1px solid var(--line); padding: 48px 0; }
+.faq-list { display: flex; flex-direction: column; border-top: 1px solid var(--line); margin-top: 36px; }
+.faq-item { border-bottom: 1px solid var(--line); transition: background .25s var(--ease); }
+.faq-item[open] { background: rgba(255, 255, 255, 0.02); }
+
+.faq-question {
+  width: 100%; display: flex; align-items: center; justify-content: space-between;
+  gap: 20px; padding: 24px 8px; cursor: pointer; user-select: none;
+  font-family: inherit; font-size: 16px; color: var(--text);
+  list-style: none; -webkit-tap-highlight-color: transparent;
+  transition: color .2s var(--ease);
+}
+.faq-question::-webkit-details-marker,
+.faq-question::marker { display: none; content: ""; }
+.faq-question:hover { color: var(--gold2); }
+
+.faq-q-left { display: flex; align-items: baseline; gap: 18px; flex: 1; min-width: 0; }
+.faq-num { font-size: 11px; color: var(--gold); letter-spacing: .12em; font-weight: 700; flex: 0 0 24px; }
+.faq-title { font-size: clamp(16px, 2vw, 19px); font-weight: 600; letter-spacing: -.02em; line-height: 1.35; color: inherit; }
+
+.faq-toggle {
+  width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--line);
+  display: grid; place-items: center; flex: 0 0 34px; color: var(--gold2);
+  font-size: 18px; line-height: 1; transition: transform .3s var(--ease), border-color .3s var(--ease), background .3s var(--ease);
+}
+.faq-item[open] .faq-toggle {
+  transform: rotate(45deg); border-color: var(--gold); background: rgba(197, 162, 106, .14);
+}
+
+.faq-answer {
+  padding: 0 8px 24px 50px;
+  animation: faqFadeIn .3s var(--ease);
+}
+@keyframes faqFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: none; }
+}
+.faq-answer p { color: #cfd0d0; font-size: 14.5px; line-height: 1.7; max-width: 820px; margin: 0; }
+.faq-answer strong { color: var(--gold2); font-weight: 600; }
+
+.faq-footer-note {
+  margin-top: 40px; padding: 24px 28px; background: var(--panel); border: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+}
+.faq-footer-note strong { color: var(--text); display: block; font-size: 15px; margin-bottom: 4px; }
+.faq-footer-note p { font-size: 13.5px; color: var(--muted); margin: 0; max-width: 580px; }
+.btn-faq {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 22px; background: var(--gold); color: #111; text-decoration: none;
+  font-size: 11px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase;
+  transition: transform .25s var(--ease), background .25s var(--ease); flex-shrink: 0;
+}
+.btn-faq:hover { background: var(--gold2); transform: translateY(-2px); }
+
+@media(max-width: 640px) {
+  .faq-section { padding: 36px 0; }
+  .faq-question { padding: 18px 4px; gap: 12px; }
+  .faq-q-left { gap: 12px; }
+  .faq-num { font-size: 10px; flex: 0 0 18px; }
+  .faq-title { font-size: 15px; line-height: 1.35; }
+  .faq-toggle { width: 30px; height: 30px; flex: 0 0 30px; font-size: 16px; }
+  .faq-answer { padding: 0 4px 18px 30px; }
+  .faq-answer p { font-size: 13.5px; line-height: 1.6; }
+  .faq-footer-note { padding: 20px 16px; flex-direction: column; align-items: stretch; gap: 16px; }
+  .btn-faq { width: 100%; min-height: 46px; }
+}
+</style>
 </head>
 <body>
 <div class="scrollbar" id="scrollbar"></div>
@@ -606,65 +675,65 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 
   <div class="faq-list reveal">
 
-   <div class="faq-item active">
-    <button class="faq-question" type="button" aria-expanded="true">
+   <details class="faq-item" name="faq">
+    <summary class="faq-question">
      <span class="faq-q-left"><span class="faq-num">01</span><span class="faq-title">Будет ли пыль в квартире во время циклевки?</span></span>
      <span class="faq-toggle" aria-hidden="true">+</span>
-    </button>
+    </summary>
     <div class="faq-answer">
      <p><strong>Практически нет.</strong> Мы работаем исключительно на профессиональной немецкой технике <strong>Lägler (Hummel и Trio)</strong> со встроенными мощными турбинами принудительного пылеудаления. Пыль собирается в герметичные фильтр-мешки прямо во время прохода. Стены, потолки и обои остаются чистыми.</p>
     </div>
-   </div>
+   </details>
 
-   <div class="faq-item">
-    <button class="faq-question" type="button" aria-expanded="false">
+   <details class="faq-item" name="faq">
+    <summary class="faq-question">
      <span class="faq-q-left"><span class="faq-num">02</span><span class="faq-title">Нужно ли полностью выносить всю мебель из комнат?</span></span>
      <span class="faq-toggle" aria-hidden="true">+</span>
-    </button>
+    </summary>
     <div class="faq-answer">
      <p>Из помещения, где непосредственно выполняется циклевка или укладка, мебель необходимо убрать для непрерывности шлифовки и равномерного нанесения финишного слоя. Если в квартире несколько комнат, <strong>мы можем разбить работу на этапы</strong> — сначала сделать одну комнату, переставить мебель, затем перейти к следующей.</p>
     </div>
-   </div>
+   </details>
 
-   <div class="faq-item">
-    <button class="faq-question" type="button" aria-expanded="false">
+   <details class="faq-item" name="faq">
+    <summary class="faq-question">
      <span class="faq-q-left"><span class="faq-num">03</span><span class="faq-title">Сколько сохнет финишное покрытие и когда можно ходить?</span></span>
      <span class="faq-toggle" aria-hidden="true">+</span>
-    </button>
+    </summary>
     <div class="faq-answer">
      <p>Аккуратно ходить по полу в носках можно уже через <strong>12–24 часа</strong> после нанесения финального слоя лака или масла. Полная кристаллизация и набор максимальной прочности покрытия занимает <strong>от 5 до 7 дней</strong> — после этого срока можно заносить тяжёлую мебель и стелить ковры.</p>
     </div>
-   </div>
+   </details>
 
-   <div class="faq-item">
-    <button class="faq-question" type="button" aria-expanded="false">
+   <details class="faq-item" name="faq">
+    <summary class="faq-question">
      <span class="faq-q-left"><span class="faq-num">04</span><span class="faq-title">В каких случаях старый паркет можно восстановить, а когда пора менять?</span></span>
      <span class="faq-toggle" aria-hidden="true">+</span>
-    </button>
+    </summary>
     <div class="faq-answer">
      <p>В 90% случаев даже 40-летний советский штучный паркет «ёлочкой» <strong>отлично поддаётся восстановлению</strong>: мы убираем скрипы, шпаклюем щели, переклеиваем отошедшие плашки и снимаем старый потемневший лак. Дерево под ним остаётся живым и красивым. Полная замена требуется только при сквозном гниении или сильном затоплении, когда плашки полностью оторвало от основания.</p>
     </div>
-   </div>
+   </details>
 
-   <div class="faq-item">
-    <button class="faq-question" type="button" aria-expanded="false">
+   <details class="faq-item" name="faq">
+    <summary class="faq-question">
      <span class="faq-q-left"><span class="faq-num">05</span><span class="faq-title">Что лучше выбрать для финиша: лак или масло?</span></span>
      <span class="faq-toggle" aria-hidden="true">+</span>
-    </button>
+    </summary>
     <div class="faq-answer">
      <p><strong>Лак</strong> создаёт плотную защитную плёнку, максимально прост в повседневной влажной уборке и отлично защищает от истирания. <strong>Масло с твёрдым воском</strong> глубже подчёркивает текстуру и теплоту натуральной древесины, не боится локального истирания и позволяет при необходимости обновить отдельный участок без повторной перешлифовки всей комнаты. На замер мы привозим образцы обоих покрытий.</p>
     </div>
-   </div>
+   </details>
 
-   <div class="faq-item">
-    <button class="faq-question" type="button" aria-expanded="false">
+   <details class="faq-item" name="faq">
+    <summary class="faq-question">
      <span class="faq-q-left"><span class="faq-num">06</span><span class="faq-title">Сколько времени занимает работа по комнате 20–25 м²?</span></span>
      <span class="faq-toggle" aria-hidden="true">+</span>
-    </button>
+    </summary>
     <div class="faq-answer">
      <p>Стандартный цикл (грубая циклевка, тонкая финишная шлифовка дисковой машиной Trio, шпаклевание щелей и послойное нанесение защитного состава) в помещении до 25 м² обычно занимает <strong>1–2 рабочих дня</strong>.</p>
     </div>
-   </div>
+   </details>
 
   </div>
 
@@ -793,22 +862,15 @@ orderForm.addEventListener('submit',async e=>{e.preventDefault();const phone=doc
 </script>
 
   <script src="portfolio-gallery.js?v=20261012-5" defer></script>
-<script>
-// FAQ ACCORDION
-document.querySelectorAll('.faq-question').forEach(button => {
-  button.addEventListener('click', () => {
-    const item = button.closest('.faq-item');
-    const isActive = item.classList.contains('active');
-    
-    document.querySelectorAll('.faq-item').forEach(other => {
-      other.classList.remove('active');
-      const b = other.querySelector('.faq-question');
-      if (b) b.setAttribute('aria-expanded', 'false');
-    });
 
-    if (!isActive) {
-      item.classList.add('active');
-      button.setAttribute('aria-expanded', 'true');
+<script>
+// Polyfill exclusive details for older mobile Safari
+document.querySelectorAll('details[name="faq"]').forEach(d => {
+  d.addEventListener('toggle', () => {
+    if (d.open) {
+      document.querySelectorAll('details[name="faq"]').forEach(other => {
+        if (other !== d) other.removeAttribute('open');
+      });
     }
   });
 });
