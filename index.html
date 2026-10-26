@@ -754,6 +754,249 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
   ]
 }
 </script>
+
+<style id="pricing-styles">
+/* PRICING SECTION */
+.pricing-section {
+  background: var(--bg);
+  border-top: 1px solid var(--line);
+  padding: 64px 0 72px;
+  position: relative;
+}
+.pricing-section .price-accent {
+  color: var(--gold2);
+  font-weight: 700;
+}
+.pricing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  margin-top: 40px;
+}
+.price-card {
+  background: linear-gradient(145deg, #161819 0%, #101213 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 32px 30px;
+  position: relative;
+  transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.price-card:hover {
+  border-color: rgba(197, 162, 106, 0.45);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(197, 162, 106, 0.08);
+  transform: translateY(-3px);
+}
+.price-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 22px;
+}
+.price-card-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.price-card-icon {
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  color: var(--gold2);
+  background: rgba(197, 162, 106, 0.12);
+  border: 1px solid rgba(197, 162, 106, 0.25);
+  font-size: 14px;
+}
+.price-card-title h3 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  margin: 0;
+  color: var(--text);
+}
+.price-card-badge {
+  font-size: 10px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+}
+.price-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+.price-item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 8px 10px;
+  margin: 0 -10px;
+  border-radius: 2px;
+  transition: background .2s ease;
+  cursor: pointer;
+}
+.price-item:hover {
+  background: rgba(255, 255, 255, 0.035);
+}
+.price-name {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: #e5e3de;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.price-leader {
+  flex: 1;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.22);
+  margin: 0 4px;
+  min-width: 20px;
+  height: 1px;
+  align-self: center;
+}
+.price-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--gold2);
+  white-space: nowrap;
+  letter-spacing: .02em;
+}
+.price-unit {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  margin-left: 3px;
+}
+.price-desc {
+  display: block;
+  font-size: 11.5px;
+  color: #8e9091;
+  margin-top: 2px;
+  line-height: 1.35;
+}
+
+/* Bottom banner inside pricing */
+.pricing-banner {
+  margin-top: 32px;
+  background: linear-gradient(145deg, #1a1c1d 0%, #121415 100%);
+  border: 1px solid rgba(197, 162, 106, 0.3);
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.pricing-banner-text {
+  max-width: 640px;
+}
+.pricing-banner-motto {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 10.5px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold2);
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+.pricing-banner-motto:before,
+.pricing-banner-motto:after {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--gold);
+}
+.pricing-banner-text p {
+  margin: 0;
+  font-size: 13.5px;
+  color: #cfd0d0;
+  line-height: 1.55;
+}
+.pricing-banner-text p strong {
+  color: #fff;
+}
+.pricing-banner-action {
+  flex-shrink: 0;
+}
+.btn-price-calc {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: var(--gold);
+  color: #111;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .25s ease, transform .25s ease;
+  cursor: pointer;
+}
+.btn-price-calc:hover {
+  background: var(--gold2);
+  transform: translateY(-2px);
+}
+
+@media(max-width: 900px) {
+  .pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: 30px;
+  }
+  .pricing-banner {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 20px;
+    gap: 18px;
+  }
+  .btn-price-calc {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+@media(max-width: 640px) {
+  .pricing-section {
+    padding: 48px 0;
+  }
+  .price-card {
+    padding: 24px 18px;
+  }
+  .price-card-header {
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+  }
+  .price-card-title h3 {
+    font-size: 16px;
+  }
+  .price-item {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding: 6px 4px;
+    margin: 0;
+  }
+  .price-name {
+    font-size: 13.5px;
+    white-space: normal;
+  }
+  .price-leader {
+    display: none;
+  }
+  .price-value {
+    margin-left: auto;
+    font-size: 14px;
+  }
+}
+</style>
+
 </head>
 <body>
 <div class="scrollbar" id="scrollbar"></div>
@@ -854,7 +1097,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
 
 <div class="logo"><a class="logo-brand" href="#" aria-label="ПАРКЕТ-ХОЛЛ"><span class="logo-mark-image" aria-hidden="true"></span><span class="logo-wordmark" aria-hidden="true"><span class="logo-word"><span class="logo-letter">П</span><span class="logo-letter">А</span><span class="logo-letter">Р</span><span class="logo-letter">К</span><span class="logo-letter">Е</span><span class="logo-letter">Т</span></span><span class="logo-word"><span class="logo-letter">Х</span><span class="logo-letter">О</span><span class="logo-letter">Л</span><span class="logo-letter">Л</span></span></span></a><a class="logo-instagram" href="https://www.instagram.com/parket.nk/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @parket.nk"><span class="ig-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.7" r="1" fill="currentColor"/></svg></span></a></div>
   <nav class="nav">
-   <a href="#services">Услуги</a><a href="#steps">Этапы</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#faq">Вопросы</a>
+   <a href="#services">Услуги</a><a href="#prices">Цены</a><a href="#steps">Этапы</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#faq">Вопросы</a>
   </nav>
   <div class="header-contact">
    <a class="header-phone" href="tel:+79511804499">+7 951 180-44-99</a>
@@ -991,11 +1234,154 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  </div>
 </section>
 
+
+<section class="section pricing-section" id="prices">
+ <div class="container">
+  <div class="section-head reveal">
+   <div>
+    <div class="kicker">02 · Прайс-лист</div>
+    <h2>Честные цены.<br><span class="price-accent">Без скрытых наценок и переплат.</span></h2>
+   </div>
+   <p class="section-intro">Фиксируем смету в договоре до начала работ. Никаких внезапных доплат за «сложность» или расходники. Бесплатный выезд на замер по Новокузнецку.</p>
+  </div>
+
+  <div class="pricing-grid reveal">
+   <!-- Карта 1: Восстановление, циклёвка и финиш -->
+   <article class="price-card">
+    <div class="price-card-header">
+     <div class="price-card-title">
+      <span class="price-card-icon" aria-hidden="true">✦</span>
+      <h3>Шлифовка, реставрация и финиш</h3>
+     </div>
+     <span class="price-card-badge">Lägler без пыли</span>
+    </div>
+
+    <div class="price-list">
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Реставрация паркета</span>
+       <span class="price-desc">Устранение скрипа, замена плашек, восстановление после залития</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 1 500 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Циклёвка паркета</span>
+       <span class="price-desc">Немецкий комплекс Lägler Hummel и Trio, снятие старого лака</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 1 000 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Шлифовка деревянного пола</span>
+       <span class="price-desc">Половая, шпунтованная и террасная доска, выравнивание перепадов</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 700 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Ремонт паркета</span>
+       <span class="price-desc">Локальная подклейка, шпаклевание трещин и заделка швов</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 500 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Нанесение лака (за 1 этап)</span>
+       <span class="price-desc">Экологичные полиуретановые лаки с промежуточной межслойной матировкой</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 150 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+    </div>
+   </article>
+
+   <!-- Карта 2: Профессиональная укладка -->
+   <article class="price-card">
+    <div class="price-card-header">
+     <div class="price-card-title">
+      <span class="price-card-icon" aria-hidden="true">✦</span>
+      <h3>Профессиональная укладка полов</h3>
+     </div>
+     <span class="price-card-badge">По уровню и лазеру</span>
+    </div>
+
+    <div class="price-list">
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Укладка инженерной доски</span>
+       <span class="price-desc">Клеевой монтаж с соблюдением температурных и технологических зазоров</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 1 500 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Укладка паркета</span>
+       <span class="price-desc">Штучный паркет: английская и французская ёлочка, палуба, квадраты</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 1 000 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Укладка паркетной доски</span>
+       <span class="price-desc">Замковый и клеевой настил, контроль влажности основания</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 800 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+
+     <div class="price-item js-order-measure">
+      <div style="flex:1">
+       <span class="price-name">Укладка ламината</span>
+       <span class="price-desc">Настил подложки, идеальная геометрия и аккуратная подрезка у дверей</span>
+      </div>
+      <span class="price-leader"></span>
+      <span class="price-value">от 400 ₽<span class="price-unit">/ м²</span></span>
+     </div>
+    </div>
+
+    <!-- Заметка о гарантии внутри карты укладки -->
+    <div style="margin-top:20px;padding:14px 16px;background:rgba(255,255,255,0.02);border:1px dashed rgba(224,194,138,0.25);display:flex;align-items:center;gap:12px">
+     <span style="color:var(--gold2);font-size:18px">🛡</span>
+     <span style="font-size:12px;color:#a8aaaa;line-height:1.4">Гарантия на укладку и геометрию швов. Проверяем основание влагомером перед началом.</span>
+    </div>
+   </article>
+  </div>
+
+  <!-- Нижняя плашка с девизом и вызовом замерщика -->
+  <div class="pricing-banner reveal">
+   <div class="pricing-banner-text">
+    <div class="pricing-banner-motto">Натуральные полы на долгие годы</div>
+    <p>Точная стоимость рассчитывается после <strong>бесплатного осмотра и замера</strong>. Мастер приедет с образцами дерева и реальными выкрасами под лаком и маслом.</p>
+   </div>
+   <div class="pricing-banner-action">
+    <a class="btn-price-calc js-order-measure" href="#orderModal">
+     <span>Заказать точный расчёт</span>
+     <span aria-hidden="true">→</span>
+    </a>
+   </div>
+  </div>
+ </div>
+</section>
+
+
 <section class="section steps-section" id="steps">
  <div class="container">
   <div class="section-head reveal">
    <div>
-    <div class="kicker">02 · Порядок работы</div>
+    <div class="kicker">03 · Порядок работы</div>
     <h2>От задачи до готового пола.<br><span class="steps-accent">Укладка. Реставрация. Финиш.</span></h2>
    </div>
    <p class="section-intro">Работаем по чёткой технологии — будь то укладка модульного паркета с нуля или восстановление исторического пола. Вы всегда знаете, что происходит на объекте.</p>
@@ -1115,7 +1501,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  <div class="container">
   <div class="section-head reveal">
    <div>
-    <div class="kicker">06 · Вопросы и ответы</div>
+    <div class="kicker">07 · Вопросы и ответы</div>
     <h2>Развеиваем сомнения.<br><span class="faq-accent">Честно о работе с деревом.</span></h2>
    </div>
    <p class="section-intro">Собрали главные вопросы, которые нам чаще всего задают перед началом циклевки, реставрации или укладки пола в Новокузнецке и области.</p>
@@ -1211,7 +1597,7 @@ footer{padding:60px 0 110px;background:#0a0b0c;border-top:1px solid var(--line)}
  <div class="container">
   <div class="footer-grid">
    <div><div class="footer-brand">ПАРКЕТ-ХОЛЛ</div><div class="footer-note">РЕСТАВРАЦИЯ · ШЛИФОВКА · УКЛАДКА ДЕРЕВЯННЫХ ПОЛОВ<br>Новокузнецк · Кузбасс</div></div>
-   <div class="footer-links"><a href="#services">Услуги</a><a href="#steps">Этапы</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#faq">Вопросы</a></div>
+   <div class="footer-links"><a href="#services">Услуги</a><a href="#prices">Цены</a><a href="#steps">Этапы</a><a href="#works">Работы</a><a href="#technology">Технология</a><a href="#faq">Вопросы</a></div>
    <div class="footer-contact">
 <a href="tel:+79511804499">+7 951 180-44-99</a><span><a href="mailto:parket-nk@mail.ru">parket-nk@mail.ru</a></span></div>
   </div>
